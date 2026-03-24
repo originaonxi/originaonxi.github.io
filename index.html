@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aonxi — AGI Revenue & Capital Infrastructure</title>
+<meta name="description" content="Two autonomous agents that find revenue and capital for the 400 million businesses Fortune 500 ignores. $999/month. 90-day ROI guarantee.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#fff;color:#1a1a1a;font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:#111;text-decoration:none}
+.mono{font-family:'JetBrains Mono','SF Mono',monospace}
+
+/* Layout */
+.container{max-width:1080px;margin:0 auto;padding:0 32px}
+.section{padding:100px 0}
+.section-alt{background:#fafafa}
+.divider{height:1px;background:#eee;max-width:1080px;margin:0 auto}
+
+/* Hero */
+.hero{padding:120px 0 100px;text-align:center}
+.hero-badge{display:inline-block;background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0;border-radius:100px;padding:6px 20px;font-size:0.78rem;font-weight:600;margin-bottom:24px;letter-spacing:0.3px}
+.hero h1{font-size:3.2rem;font-weight:900;color:#000;letter-spacing:-1.5px;line-height:1.1;margin-bottom:20px}
+.hero h1 em{font-style:normal;color:#16a34a}
+.hero-sub{font-size:1.15rem;color:#666;max-width:580px;margin:0 auto 40px;font-weight:400;line-height:1.6}
+
+.hero-metrics{display:flex;justify-content:center;gap:48px;margin-bottom:48px;flex-wrap:wrap}
+.hm{text-align:center}
+.hm-val{font-size:2rem;font-weight:900;color:#000;letter-spacing:-0.5px}
+.hm-lbl{font-size:0.72rem;color:#999;text-transform:uppercase;letter-spacing:1.5px;font-weight:500;margin-top:2px}
+
+.btn-primary{display:inline-block;background:#000;color:#fff;padding:16px 40px;border-radius:10px;font-weight:700;font-size:0.95rem;transition:background 0.2s}
+.btn-primary:hover{background:#222}
+.btn-secondary{display:inline-block;background:#fff;color:#000;border:2px solid #e5e5e5;padding:14px 36px;border-radius:10px;font-weight:600;font-size:0.9rem;margin-left:12px;transition:border-color 0.2s}
+.btn-secondary:hover{border-color:#999}
+.hero-note{font-size:0.78rem;color:#bbb;margin-top:16px}
+
+/* Terminal */
+.terminal{background:#0a0a0a;border-radius:12px;overflow:hidden;margin:40px 0;box-shadow:0 4px 24px rgba(0,0,0,0.08)}
+.term-bar{background:#141414;padding:10px 16px;display:flex;align-items:center;gap:8px}
+.term-dot{width:12px;height:12px;border-radius:50%}
+.term-title{font-size:0.72rem;color:#555;margin-left:8px;font-family:'JetBrains Mono',monospace}
+.term-body{padding:24px;font-size:0.8rem;line-height:1.8;font-family:'JetBrains Mono',monospace;overflow-x:auto;color:#888}
+.term-body .c{color:#555}
+.term-body .g{color:#4ade80}
+.term-body .y{color:#fbbf24}
+.term-body .b{color:#60a5fa}
+.term-body .p{color:#a78bfa}
+.term-body .r{color:#f87171}
+.term-body .w{color:#fff;font-weight:700}
+
+/* Section headers */
+.sh{margin-bottom:48px}
+.sh-label{font-size:0.72rem;color:#16a34a;text-transform:uppercase;letter-spacing:2px;font-weight:700;margin-bottom:10px}
+.sh h2{font-size:2.2rem;font-weight:900;color:#000;letter-spacing:-1px;line-height:1.15}
+.sh p{font-size:1rem;color:#777;margin-top:12px;max-width:560px;line-height:1.6}
+
+/* Problem */
+.problem-row{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:48px}
+.problem-card{background:#fff;border:1px solid #eee;border-radius:12px;padding:36px}
+.problem-card .pc-stat{font-size:2.5rem;font-weight:900;color:#000;letter-spacing:-1px;margin-bottom:8px}
+.problem-card h3{font-size:1rem;font-weight:700;color:#000;margin-bottom:8px}
+.problem-card p{font-size:0.88rem;color:#888;line-height:1.6}
+
+/* Two agents */
+.agents-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px}
+.agent-card{border:1px solid #eee;border-radius:14px;padding:36px;position:relative;overflow:hidden;background:#fff}
+.agent-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.agent-card.aros::before{background:#16a34a}
+.agent-card.aria::before{background:#2563eb}
+.ac-name{font-size:1.3rem;font-weight:900;letter-spacing:-0.5px;margin-bottom:4px}
+.agent-card.aros .ac-name{color:#16a34a}
+.agent-card.aria .ac-name{color:#2563eb}
+.ac-desc{font-size:0.85rem;color:#888;margin-bottom:4px}
+.ac-link{font-size:0.75rem;color:#bbb;margin-bottom:24px;display:block}
+.ac-link a{color:#bbb}.ac-link a:hover{color:#666}
+
+.step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start}
+.step-n{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:800;color:#fff;flex-shrink:0}
+.agent-card.aros .step-n{background:#16a34a}
+.agent-card.aria .step-n{background:#2563eb}
+.step-info{flex:1}
+.step-label{font-size:0.85rem;font-weight:700;color:#222}
+.step-detail{font-size:0.78rem;color:#999;margin-top:1px}
+.step-tool{font-size:0.68rem;color:#ccc;margin-top:2px;font-family:'JetBrains Mono',monospace}
+
+/* PKM */
+.pkm-compare{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:48px 0}
+.pkm-box{border:1px solid #eee;border-radius:12px;padding:28px;position:relative;overflow:hidden}
+.pkm-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.pkm-box.bad::before{background:#ef4444}
+.pkm-box.good::before{background:#16a34a}
+.pkm-label{font-size:0.68rem;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:12px}
+.pkm-box.bad .pkm-label{color:#ef4444}
+.pkm-box.good .pkm-label{color:#16a34a}
+.pkm-box blockquote{font-size:0.92rem;color:#555;line-height:1.7;border:none;padding:0;margin:0;font-style:italic}
+.pkm-box.good blockquote{color:#222;font-style:normal;font-weight:500}
+.pkm-tag{font-size:0.68rem;color:#bbb;margin-top:12px}
+
+.modes-table{width:100%;border-collapse:collapse;margin-top:32px}
+.modes-table th{text-align:left;font-size:0.68rem;text-transform:uppercase;letter-spacing:1px;color:#bbb;font-weight:600;padding:8px 12px;border-bottom:2px solid #eee}
+.modes-table td{padding:10px 12px;font-size:0.82rem;border-bottom:1px solid #f5f5f5;vertical-align:top}
+.modes-table .m-dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:8px;vertical-align:middle}
+.modes-table .m-name{font-weight:700;color:#222}
+.modes-table .m-who{color:#888}
+.modes-table .m-bypass{color:#16a34a;font-weight:600;font-family:'JetBrains Mono',monospace;font-size:0.75rem}
+
+.pkm-cta{text-align:center;margin-top:40px}
+.btn-pkm{display:inline-block;background:#f5f3ff;color:#7c3aed;border:1px solid #ddd6fe;padding:12px 28px;border-radius:10px;font-weight:700;font-size:0.85rem;transition:background 0.2s}
+.btn-pkm:hover{background:#ede9fe}
+
+/* Brain */
+.brain-flow{max-width:600px;margin:48px auto 0;text-align:center}
+.bf-node{background:#fafafa;border:1px solid #eee;border-radius:10px;padding:18px 24px;margin-bottom:0}
+.bf-node h4{font-size:0.82rem;font-weight:700;color:#222;margin-bottom:2px}
+.bf-node p{font-size:0.75rem;color:#999}
+.bf-arrow{color:#ddd;font-size:1.5rem;padding:8px 0;line-height:1}
+.bf-center{background:#fffbeb;border:2px solid #fde68a;border-radius:14px;padding:28px;margin:0}
+.bf-center h3{font-size:1.1rem;font-weight:900;color:#000;margin-bottom:4px}
+.bf-center p{font-size:0.82rem;color:#92400e}
+.bf-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
+.bf-stat{background:#fff;border:1px solid #fde68a;border-radius:6px;padding:10px;text-align:center}
+.bf-stat-val{font-size:0.88rem;font-weight:800;color:#000}
+.bf-stat-lbl{font-size:0.6rem;color:#999;text-transform:uppercase;letter-spacing:0.5px}
+
+/* Results */
+.results-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.result-card{text-align:center;padding:32px 20px;border:1px solid #eee;border-radius:12px;background:#fff}
+.result-card .rv{font-size:2rem;font-weight:900;color:#000;letter-spacing:-0.5px}
+.result-card .rl{font-size:0.72rem;color:#999;text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+.result-card .rd{font-size:0.68rem;color:#ccc;margin-top:4px}
+
+/* Merge */
+.merge-visual{text-align:center;margin-top:48px}
+.merge-agents{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:20px}
+.merge-pill{background:#f5f5f5;border:1px solid #eee;border-radius:8px;padding:8px 16px;font-size:0.75rem;color:#888;font-weight:500}
+.merge-arrows{color:#ddd;font-size:1.2rem;margin-bottom:16px;letter-spacing:6px}
+.merge-cores{display:flex;justify-content:center;gap:20px;margin-bottom:16px}
+.merge-core-box{border:2px solid;border-radius:12px;padding:20px 36px;font-weight:900;font-size:1rem}
+.merge-core-box.mc-aros{border-color:#16a34a;color:#16a34a}
+.merge-core-box.mc-aria{border-color:#2563eb;color:#2563eb}
+.merge-core-box span{display:block;font-size:0.7rem;font-weight:400;color:#999;margin-top:2px}
+.merge-plus{color:#ddd;font-size:1.5rem;display:flex;align-items:center}
+.merge-brain{display:inline-block;border:2px solid #f59e0b;border-radius:12px;padding:16px 36px;font-weight:900;font-size:0.9rem;color:#f59e0b}
+.merge-brain span{display:block;font-size:0.65rem;font-weight:400;color:#999;margin-top:2px}
+
+/* LLM */
+.llm-chips{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:32px}
+.llm-chip{background:#fff;border:1px solid #eee;border-radius:10px;padding:12px 24px;font-size:0.82rem;font-weight:700;color:#222}
+
+/* Offer */
+.offer-card{max-width:560px;margin:48px auto 0;border:2px solid #000;border-radius:16px;padding:48px;text-align:center}
+.offer-price{font-size:4rem;font-weight:900;color:#000;letter-spacing:-2px;line-height:1}
+.offer-per{font-size:1rem;color:#888;margin-bottom:32px}
+.offer-items{text-align:left;margin-bottom:32px}
+.offer-item{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start}
+.offer-check{color:#16a34a;font-weight:900;font-size:1.1rem;line-height:1.4;flex-shrink:0}
+.offer-text{font-size:0.9rem;color:#555;line-height:1.5}
+.offer-guarantee{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:20px;margin-bottom:24px;text-align:left}
+.offer-guarantee h4{font-size:0.85rem;font-weight:800;color:#16a34a;margin-bottom:4px}
+.offer-guarantee p{font-size:0.82rem;color:#666;line-height:1.5}
+.offer-vs{font-size:0.78rem;color:#bbb;margin-top:16px}
+
+/* Github */
+.gh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.gh-card{border:1px solid #eee;border-radius:10px;padding:20px;background:#fff;transition:border-color 0.2s}
+.gh-card:hover{border-color:#ccc}
+.gh-name{font-size:0.88rem;font-weight:800;color:#000;margin-bottom:4px}
+.gh-desc{font-size:0.75rem;color:#999;line-height:1.5;margin-bottom:8px}
+.gh-link{font-size:0.7rem;color:#16a34a;font-weight:500}
+.gh-badge{display:inline-block;font-size:0.6rem;padding:3px 8px;border-radius:4px;font-weight:700;margin-top:6px}
+.gh-badge.live{background:#f0fdf4;color:#16a34a}
+.gh-badge.research{background:#eff6ff;color:#2563eb}
+
+/* CTA */
+.cta-final{text-align:center;padding:100px 32px;background:#000;color:#fff}
+.cta-final h2{font-size:2rem;font-weight:900;letter-spacing:-1px;margin-bottom:24px}
+.cta-final .btn-cta{display:inline-block;background:#16a34a;color:#fff;padding:18px 48px;border-radius:10px;font-weight:800;font-size:1rem;transition:background 0.2s}
+.cta-final .btn-cta:hover{background:#15803d}
+.cta-final .cta-sub{font-size:0.78rem;color:#666;margin-top:16px}
+.cta-final .cta-sub a{color:#888}
+
+/* Footer */
+.footer{padding:48px 32px;text-align:center;border-top:1px solid #f0f0f0}
+.footer p{font-size:0.78rem;color:#bbb;line-height:1.8}
+.footer a{color:#999}
+
+@media(max-width:700px){
+  .hero h1{font-size:2rem}
+  .sh h2{font-size:1.6rem}
+  .problem-row,.agents-grid,.pkm-compare,.results-row,.gh-grid{grid-template-columns:1fr}
+  .hero-metrics{gap:24px}
+  .bf-stats{grid-template-columns:1fr 1fr}
+  .offer-price{font-size:3rem}
+  .merge-cores{flex-direction:column;align-items:center}
+  .merge-plus{transform:rotate(90deg)}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════ HERO ═══════ -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-badge">Now live — $199K collected, $0 raised</div>
+    <h1>The AGI Revenue & Capital Layer<br>for the <em>400 Million</em></h1>
+    <div class="hero-sub">Two autonomous agents that find customers and capital for businesses that cannot afford a sales team. $0.50/day to run. Fortune 500 GTM at 0.05% of the cost.</div>
+
+    <div class="hero-metrics">
+      <div class="hm"><div class="hm-val">$199K</div><div class="hm-lbl">Collected</div></div>
+      <div class="hm"><div class="hm-val">$8K</div><div class="hm-lbl">Peak Day</div></div>
+      <div class="hm"><div class="hm-val">$2.9M</div><div class="hm-lbl">ARR Velocity</div></div>
+      <div class="hm"><div class="hm-val">$0.50</div><div class="hm-lbl">Cost / Day</div></div>
+      <div class="hm"><div class="hm-val">0</div><div class="hm-lbl">Sales Reps</div></div>
+    </div>
+
+    <a href="https://calendar.app.google/gZ6V9ry93SQizZye8" class="btn-primary">Book a demo — we run it on your prospects</a>
+    <a href="https://originaonxi.github.io/pkm-analyzer/" class="btn-secondary">Try PKM Analyzer free</a>
+    <div class="hero-note">No deck. No slides. We show you the agent running in your terminal, on your ICP, in real time.</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════ LIVE TERMINAL ═══════ -->
+<div class="section section-alt">
+  <div class="container">
+    <div class="sh">
+      <div class="sh-label">Live output</div>
+      <h2>This is what AROS does every morning</h2>
+      <p>No human. No CRM. Just the agent, running autonomously at 6am, for $0.50.</p>
+    </div>
+
+    <div class="terminal">
+      <div class="term-bar">
+        <div class="term-dot" style="background:#f87171"></div>
+        <div class="term-dot" style="background:#fbbf24"></div>
+        <div class="term-dot" style="background:#4ade80"></div>
+        <div class="term-title">aros.py — daily autonomous run — March 24, 2026</div>
+      </div>
+      <div class="term-body">
+<span class="c">$ python aros.py</span>
+
+<span class="g">[06:01] Scanning SerpAPI for ICP signals...</span>
+<span class="c">  Found 23 home care agencies hiring caregivers
+  Found 8 cleaning franchises expanding locations
+  Found 4 HVAC companies with review spikes</span>
+
+<span class="g">[06:02] Scoring 35 prospects by ICP fit...</span>
+<span class="c">  Tier A: 7 (score 85-100)  |  Tier B: 12 (60-84)  |  Tier C: 16 (skipped)</span>
+
+<span class="g">[06:02] Running PKM defense profiling...</span>
+<span class="p">  Brian Torres — BrightClean Home Care, AZ
+    Mode: OVERLOAD_AVOIDANCE (awareness: 3/10)
+    Bypass: ULTRA_SHORT — 60 word hard cap
+    Banned: "hope this finds you", "quick call", "at your convenience"</span>
+
+<span class="p">  Sarah Kim — CEO, CareFirst Solutions, NY
+    Mode: IDENTITY_THREAT (awareness: 7/10)
+    Bypass: AMPLIFICATION — "your judgment runs this"
+    Banned: "let us fix", "you need", "struggling with"</span>
+
+<span class="g">[06:03] Generating messages via Claude Haiku...</span>
+<span class="y">  Brian → 58 words, 0 banned phrases, bypass applied ✓
+  Sarah → 74 words, 0 banned phrases, bypass applied ✓</span>
+
+<span class="g">[06:03] Sending 19 emails via Gmail SMTP...</span>
+<span class="c">  ✓ 7 Tier A sent  ·  ✓ 12 Tier B sent  ·  All tracked in Airtable</span>
+
+<span class="g">[06:04] Checking yesterday's replies...</span>
+<span class="w">  ★ HOT REPLY: Mike Rodriguez (CleanPro TX)
+    "Tuesday 2pm works. Send me the link."
+    → Meeting booked. Outcome logged. Pattern stored.</span>
+
+<span class="c">  Today: $0.47 cost  ·  19 emails  ·  1 meeting  ·  $4,788 pipeline added</span>
+      </div>
+    </div>
+
+    <div class="terminal" style="margin-top:20px">
+      <div class="term-bar">
+        <div class="term-dot" style="background:#f87171"></div>
+        <div class="term-dot" style="background:#fbbf24"></div>
+        <div class="term-dot" style="background:#4ade80"></div>
+        <div class="term-title">aria.py run — investor pipeline</div>
+      </div>
+      <div class="term-body">
+<span class="c">$ python aria.py run</span>
+
+<span class="b">[1/7] Finding investors...</span>
+<span class="c">  148 found → filtered to 34 Tier 1 (thesis match 85%+)</span>
+
+<span class="b">[2/7] Verifying emails...</span>
+<span class="c">  30 valid  ·  4 bounces caught before sending</span>
+
+<span class="b">[3/7] PKM defense profiling...</span>
+<span class="p">  Sarah Chen (Partner, Bessemer) → MOTIVE_INFERENCE (9/10)
+  Bypass: PURE_DATA — open with number, never "I"</span>
+
+<span class="b">[4/7] Writing (PKM applied)...</span>
+<span class="y">  "$199K collected. $8K peak day. $0.50/day.
+   Zero sales reps. Code is public.
+   You backed [co] — autonomous GTM at SMB layer.
+   This is that, built and verified. 20 min. No deck."</span>
+
+<span class="b">[5/7] Campaign created on Instantly...</span>
+<span class="c">  ✓ 19 emails queued  ·  timezone optimized  ·  reply tracking on</span>
+
+<span class="b">[6/7] Synced to Airtable CRM ✓</span>
+
+<span class="w">  Funds: General Catalyst, Bessemer, Antler, Blume, Kae Capital + 14
+  Raising: $250K pre-seed  ·  Meetings: booked ✓</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ PROBLEM ═══════ -->
+<div class="section">
+  <div class="container">
+    <div class="sh">
+      <div class="sh-label">The problem</div>
+      <h2>Two things every business needs.<br>Neither solved at scale.</h2>
+    </div>
+
+    <div class="problem-row">
+      <div class="problem-card">
+        <div class="pc-stat">$2M+</div>
+        <h3>What Fortune 500 pays per year for GTM</h3>
+        <p>40-person team. 100 tools. SDRs, AEs, CSMs, RevOps, demand gen. All of it to do two things: find revenue and find capital.</p>
+      </div>
+      <div class="problem-card">
+        <div class="pc-stat">400M</div>
+        <h3>Businesses that cannot afford any of it</h3>
+        <p>They run on instinct, referrals, and luck. New revenue is their hardest problem. Capital to fuel growth is their second hardest. Both unsolved.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════ TWO AGENTS ═══════ -->
+<div class="section section-alt">
+  <div class="container">
+    <div class="sh">
+      <div class="sh-label">The solution</div>
+      <h2>Two agents. One brain. One mission.</h2>
+      <p>Same architecture. Same brain. One finds customers. One finds capital. Both learn from every outcome.</p>
+    </div>
+
+    <div class="agents-grid">
+      <div class="agent-card aros">
+        <div class="ac-name">AROS</div>
+        <div class="ac-desc">Autonomous Revenue Operating System</div>
+        <div class="ac-link"><a href="https://github.com/originaonxi/aros-agent">github.com/originaonxi/aros-agent</a></div>
+        <div class="step"><div class="step-n">1</div><div class="step-info"><div class="step-label">Discover prospects</div><div class="step-detail">Real-time signals — hiring, expanding, struggling</div><div class="step-tool">SerpAPI</div></div></div>
+        <div class="step"><div class="step-n">2</div><div class="step-info"><div class="step-label">Score by ICP fit</div><div class="step-detail">Trained on 4 months of real customer outcomes</div><div class="step-tool">scorer.py</div></div></div>
+        <div class="step"><div class="step-n">3</div><div class="step-info"><div class="step-label">Profile defense mode</div><div class="step-detail">10 modes detected from digital profile</div><div class="step-tool">PKM Engine</div></div></div>
+        <div class="step"><div class="step-n">4</div><div class="step-info"><div class="step-label">Write bypass message</div><div class="step-detail">Mode-specific strategy, banned words enforced</div><div class="step-tool">Claude Haiku</div></div></div>
+        <div class="step"><div class="step-n">5</div><div class="step-info"><div class="step-label">Send autonomously</div><div class="step-detail">Tracked, replies classified, outcomes logged</div><div class="step-tool">Gmail SMTP</div></div></div>
+        <div class="step"><div class="step-n">6</div><div class="step-info"><div class="step-label">Learn from outcomes</div><div class="step-detail">What worked → brain → next message smarter</div><div class="step-tool">Airtable</div></div></div>
+      </div>
+
+      <div class="agent-card aria">
+        <div class="ac-name">ARIA</div>
+        <div class="ac-desc">Autonomous Relationship Intelligence Agent</div>
+        <div class="ac-link"><a href="https://github.com/originaonxi/ARIA">github.com/originaonxi/ARIA</a></div>
+        <div class="step"><div class="step-n">1</div><div class="step-info"><div class="step-label">Find investors</div><div class="step-detail">By thesis, stage, check size, portfolio signals</div><div class="step-tool">Apollo API</div></div></div>
+        <div class="step"><div class="step-n">2</div><div class="step-info"><div class="step-label">Verify emails</div><div class="step-detail">Catch bounces before sending — protect domain</div><div class="step-tool">Millionverifier</div></div></div>
+        <div class="step"><div class="step-n">3</div><div class="step-info"><div class="step-label">Research public activity</div><div class="step-detail">Portfolio moves, fund news, tweets</div><div class="step-tool">SerpAPI</div></div></div>
+        <div class="step"><div class="step-n">4</div><div class="step-info"><div class="step-label">Profile defense mode</div><div class="step-detail">VCs = MOTIVE_INFERENCE (awareness 9/10)</div><div class="step-tool">PKM Engine</div></div></div>
+        <div class="step"><div class="step-n">5</div><div class="step-info"><div class="step-label">Write & send campaign</div><div class="step-detail">PURE_DATA bypass, no pitch language</div><div class="step-tool">Claude + Instantly</div></div></div>
+        <div class="step"><div class="step-n">6</div><div class="step-info"><div class="step-label">Classify replies & alert</div><div class="step-detail">INTERESTED / OBJECTION / REFERRAL / NOT_NOW</div><div class="step-tool">Claude + HOT alerts</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ PKM ═══════ -->
+<div class="section">
+  <div class="container">
+    <div class="sh">
+      <div class="sh-label">The perception layer</div>
+      <h2>PKM — why we profile before we message</h2>
+      <p>Friestad & Wright (1994). 30 years of persuasion psychology. 10 defense modes. The sales industry ignored all of it. We built it into both agents.</p>
+    </div>
+
+    <div class="pkm-compare">
+      <div class="pkm-box bad">
+        <div class="pkm-label">Without PKM — deleted instantly</div>
+        <blockquote>"Hi Brian — hope this finds you well. I'm really excited to share what we're building. Would love to set up a quick call to discuss how we can help grow your business."</blockquote>
+        <div class="pkm-tag">4 banned phrases detected — triggers OVERLOAD_AVOIDANCE</div>
+      </div>
+      <div class="pkm-box good">
+        <div class="pkm-label">With PKM — meeting booked</div>
+        <blockquote>"Brian — 3 home care agencies in New York added 11 clients last month using Aonxi. You are hiring caregivers right now. 15 minutes Tuesday 10am?"</blockquote>
+        <div class="pkm-tag">ULTRA_SHORT bypass applied — 28 words, 0 banned phrases, 1 calendar slot</div>
+      </div>
+    </div>
+
+    <table class="modes-table">
+      <thead><tr><th>Defense mode</th><th>Who</th><th>Bypass</th></tr></thead>
+      <tbody>
+        <tr><td><span class="m-dot" style="background:#8b5cf6"></span><span class="m-name">MOTIVE_INFERENCE</span></td><td class="m-who">VCs, ex-GTM execs (Gong, HubSpot)</td><td class="m-bypass">PURE_DATA</td></tr>
+        <tr><td><span class="m-dot" style="background:#f43f5e"></span><span class="m-name">TACTIC_RECOGNITION</span></td><td class="m-who">Repeat founders, serial operators</td><td class="m-bypass">SIGNAL_HOOK</td></tr>
+        <tr><td><span class="m-dot" style="background:#14b8a6"></span><span class="m-name">OVERLOAD_AVOIDANCE</span></td><td class="m-who">SMB CEOs, home care owners</td><td class="m-bypass">ULTRA_SHORT</td></tr>
+        <tr><td><span class="m-dot" style="background:#3b82f6"></span><span class="m-name">SOCIAL_PROOF_SKEPTICISM</span></td><td class="m-who">CTOs, engineers, technical leads</td><td class="m-bypass">CREDIBILITY_FIRST</td></tr>
+        <tr><td><span class="m-dot" style="background:#f59e0b"></span><span class="m-name">AUTHORITY_DEFERENCE</span></td><td class="m-who">Directors, mid-level managers</td><td class="m-bypass">PEER_PROOF</td></tr>
+        <tr><td><span class="m-dot" style="background:#ec4899"></span><span class="m-name">LOSS_AVERSION</span></td><td class="m-who">Risk-aware buyers, regulated industries</td><td class="m-bypass">COST_OF_INACTION</td></tr>
+        <tr><td><span class="m-dot" style="background:#22c55e"></span><span class="m-name">IDENTITY_THREAT</span></td><td class="m-who">Self-made founders, bootstrapped</td><td class="m-bypass">AMPLIFICATION</td></tr>
+        <tr><td><span class="m-dot" style="background:#6b7280"></span><span class="m-name">TIMING_SKEPTICISM</span></td><td class="m-who">Perpetually "not ready" buyers</td><td class="m-bypass">TRIGGER_EVENT</td></tr>
+        <tr><td><span class="m-dot" style="background:#ef4444"></span><span class="m-name">COMPLEXITY_FEAR</span></td><td class="m-who">Non-technical owners</td><td class="m-bypass">SIMPLICITY_PROOF</td></tr>
+        <tr><td><span class="m-dot" style="background:#0ea5e9"></span><span class="m-name">PRICE_ANCHORING</span></td><td class="m-who">Budget-constrained buyers</td><td class="m-bypass">ROI_INVERSION</td></tr>
+      </tbody>
+    </table>
+
+    <div class="pkm-cta">
+      <a href="https://originaonxi.github.io/pkm-analyzer/" class="btn-pkm">Try PKM Analyzer free — paste any profile, get the defense mode</a>
+      <div style="font-size:0.72rem;color:#ccc;margin-top:8px"><a href="https://github.com/originaonxi/pkm-analyzer" style="color:#bbb">View source on GitHub</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════ BRAIN ═══════ -->
+<div class="section section-alt">
+  <div class="container">
+    <div class="sh">
+      <div class="sh-label">The brain</div>
+      <h2>Airtable — living intelligence<br>that compounds forever</h2>
+      <p>Not a CRM. A pattern library. What worked for a home care agency in Arizona last Tuesday. What defense mode was cracked and how. Never forgets.</p>
+    </div>
+
+    <div class="brain-flow">
+      <div class="bf-node"><h4>Agent sends message</h4><p>Prospect, defense mode, bypass strategy, message, timestamp</p></div>
+      <div class="bf-arrow">↓</div>
+      <div class="bf-node"><h4>Outcome recorded</h4><p>Open, reply, meeting booked, deal closed, churned — every event</p></div>
+      <div class="bf-arrow">↓</div>
+      <div class="bf-center">
+        <h3>AIRTABLE</h3>
+        <p>Shared between AROS and ARIA. Every customer makes the system better for every other customer.</p>
+        <div class="bf-stats">
+          <div class="bf-stat"><div class="bf-stat-val">Every</div><div class="bf-stat-lbl">Contact</div></div>
+          <div class="bf-stat"><div class="bf-stat-val">Every</div><div class="bf-stat-lbl">Message</div></div>
+          <div class="bf-stat"><div class="bf-stat-val">Every</div><div class="bf-stat-lbl">Outcome</div></div>
+          <div class="bf-stat"><div class="bf-stat-val">Every</div><div class="bf-stat-lbl">Defense Cracked</div></div>
+          <div class="bf-stat"><div class="bf-stat-val">Every</div><div class="bf-stat-lbl">Pattern</div></div>
+          <div class="bf-stat"><div class="bf-stat-val">Forever</div><div class="bf-stat-lbl">Compounding</div></div>
+        </div>
+      </div>
+      <div class="bf-arrow">↓</div>
+      <div class="bf-node"><h4>Next message is smarter</h4><p>40 customers × 6 months × every defense mode = the agent today is better than yesterday</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ RESULTS ═══════ -->
+<div class="section">
+  <div class="container">
+    <div class="sh">
+      <div class="sh-label">Proof</div>
+      <h2>Every number real. Every commit dated.</h2>
+    </div>
+
+    <div class="results-row">
+      <div class="result-card"><div class="rv">$199K</div><div class="rl">Gross Collected</div><div class="rd">Oct 2025 — Mar 2026</div></div>
+      <div class="result-card"><div class="rv">$8,000</div><div class="rl">Peak Single Day</div><div class="rd">March 2026</div></div>
+      <div class="result-card"><div class="rv">$2.9M</div><div class="rl">ARR Velocity</div><div class="rd">That day annualized</div></div>
+      <div class="result-card"><div class="rv">$0.50</div><div class="rl">Cost Per Day</div><div class="rd">To run AROS</div></div>
+      <div class="result-card"><div class="rv">40</div><div class="rl">Customers</div><div class="rd">Home care, cleaning, franchise</div></div>
+      <div class="result-card"><div class="rv">$0</div><div class="rl">Raised</div><div class="rd">100% bootstrapped</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════ MERGE ═══════ -->
+<div class="section section-alt">
+  <div class="container">
+    <div class="sh">
+      <div class="sh-label">Architecture</div>
+      <h2>Every new capability merges<br>into two permanent cores</h2>
+      <p>New agents don't create new products. They become modules. AROS and ARIA are infrastructure. They don't get replaced. They get smarter.</p>
+    </div>
+
+    <div class="merge-visual">
+      <div class="merge-agents">
+        <div class="merge-pill">PKM Analyzer</div>
+        <div class="merge-pill">LinkedIn Agent</div>
+        <div class="merge-pill">SMS Agent</div>
+        <div class="merge-pill">Content Agent</div>
+        <div class="merge-pill">Ads Agent</div>
+        <div class="merge-pill">SEO Agent</div>
+        <div class="merge-pill">Reply Classifier</div>
+        <div class="merge-pill">Signal Detector</div>
+      </div>
+      <div class="merge-arrows">↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓</div>
+      <div class="merge-cores">
+        <div class="merge-core-box mc-aros">AROS<span>finds revenue</span></div>
+        <div class="merge-plus">+</div>
+        <div class="merge-core-box mc-aria">ARIA<span>finds capital</span></div>
+      </div>
+      <div class="merge-arrows">↓</div>
+      <div class="merge-brain">AIRTABLE<span>single source of truth — compounds forever</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ LLM ═══════ -->
+<div class="section">
+  <div class="container">
+    <div class="sh">
+      <div class="sh-label">Coming next</div>
+      <h2>LLM Content Layer</h2>
+      <p>When someone asks any AI about your market, your business should be in the answer. Not SEO for 2015. Presence at the inference layer.</p>
+    </div>
+    <div class="llm-chips">
+      <div class="llm-chip">Claude</div>
+      <div class="llm-chip">GPT</div>
+      <div class="llm-chip">Gemini</div>
+      <div class="llm-chip">Perplexity</div>
+      <div class="llm-chip">Grok</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ═══════ OFFER ═══════ -->
+<div class="section section-alt">
+  <div class="container">
+    <div class="sh" style="text-align:center">
+      <div class="sh-label">The offer</div>
+      <h2>What Fortune 500 pays $2M/year for</h2>
+    </div>
+
+    <div class="offer-card">
+      <div class="offer-price">$999</div>
+      <div class="offer-per">/month — both agents included</div>
+
+      <div class="offer-items">
+        <div class="offer-item"><div class="offer-check">&#10003;</div><div class="offer-text">AROS running autonomously to find new customers</div></div>
+        <div class="offer-item"><div class="offer-check">&#10003;</div><div class="offer-text">ARIA running autonomously to find capital if needed</div></div>
+        <div class="offer-item"><div class="offer-check">&#10003;</div><div class="offer-text">PKM-calibrated outreach to every single prospect</div></div>
+        <div class="offer-item"><div class="offer-check">&#10003;</div><div class="offer-text">Full Airtable dashboard — every action, outcome, pattern</div></div>
+        <div class="offer-item"><div class="offer-check">&#10003;</div><div class="offer-text">LLM content layer building your AI search presence</div></div>
+        <div class="offer-item"><div class="offer-check">&#10003;</div><div class="offer-text">Learning that compounds every month you stay</div></div>
+      </div>
+
+      <div class="offer-guarantee">
+        <h4>90-day ROI guarantee</h4>
+        <p>Positive ROI within 90 days. Or we work for free until you hit it. We can guarantee this because we have already done it — $199K collected at $0.50/day. The patterns are proven.</p>
+      </div>
+
+      <a href="https://calendar.app.google/gZ6V9ry93SQizZye8" class="btn-primary" style="width:100%;text-align:center;display:block">Start now — book your onboarding call</a>
+      <div class="offer-vs">Fortune 500 GTM: $2,000,000/year&ensp;·&ensp;Your GTM: $11,988/year&ensp;·&ensp;The ROI closes itself</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ OPEN SOURCE ═══════ -->
+<div class="section">
+  <div class="container">
+    <div class="sh">
+      <div class="sh-label">Open source</div>
+      <h2>The code is public. The numbers are real.</h2>
+      <p>Every commit dated. Every architecture decision visible. The competitive advantage isn't the code — it's the compounding brain.</p>
+    </div>
+
+    <div class="gh-grid">
+      <div class="gh-card"><div class="gh-name">AROS</div><div class="gh-desc">Revenue intelligence core. Signals, PKM, autonomous outreach, briefings.</div><a class="gh-link" href="https://github.com/originaonxi/aros-agent">github.com/originaonxi/aros-agent</a><br><span class="gh-badge live">PRODUCTION</span></div>
+      <div class="gh-card"><div class="gh-name">ARIA</div><div class="gh-desc">Capital intelligence core. Investor pipeline, thesis scoring, reply classification.</div><a class="gh-link" href="https://github.com/originaonxi/ARIA">github.com/originaonxi/ARIA</a><br><span class="gh-badge live">PRODUCTION</span></div>
+      <div class="gh-card"><div class="gh-name">PKM Analyzer</div><div class="gh-desc">Defense profiling — public tool. Free, no login, no API key.</div><a class="gh-link" href="https://github.com/originaonxi/pkm-analyzer">Try it live →</a><br><span class="gh-badge live">LIVE TOOL</span></div>
+      <div class="gh-card"><div class="gh-name">ASM Replication</div><div class="gh-desc">Multi-session agent memory. NeurIPS 2026 submission. Real revenue data.</div><a class="gh-link" href="https://github.com/originaonxi/asm-replication">View research →</a><br><span class="gh-badge research">RESEARCH</span></div>
+      <div class="gh-card"><div class="gh-name">MoE Study</div><div class="gh-desc">Routing strategy in small-scale MoE Transformers. Original metric. Published.</div><a class="gh-link" href="https://github.com/originaonxi/moe-efficiency-study">View paper →</a><br><span class="gh-badge research">PUBLISHED</span></div>
+      <div class="gh-card"><div class="gh-name">VISION.md</div><div class="gh-desc">The founding document. AGI revenue & capital layer for 400M businesses.</div><a class="gh-link" href="https://github.com/originaonxi/aros-agent/blob/main/VISION.md">Read the vision →</a><br><span class="gh-badge research">MANIFESTO</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════ FINAL CTA ═══════ -->
+<div class="cta-final">
+  <h2>Your competitors will not have this next month.<br>You can have it today.</h2>
+  <a href="https://calendar.app.google/gZ6V9ry93SQizZye8" class="btn-cta">Book a demo — see the agents run on your ICP</a>
+  <div class="cta-sub">origin@aonxi.com&ensp;·&ensp;<a href="https://aonxi.app">aonxi.app</a>&ensp;·&ensp;<a href="https://github.com/originaonxi">github.com/originaonxi</a></div>
+</div>
+
+<!-- ═══════ FOOTER ═══════ -->
+<div class="footer">
+  <p>Built by <a href="https://github.com/originaonxi">Anmol Sam</a>&ensp;·&ensp;Aonxi&ensp;·&ensp;<a href="mailto:origin@aonxi.com">origin@aonxi.com</a></p>
+  <p>$0 raised&ensp;·&ensp;$199K collected&ensp;·&ensp;Building in public&ensp;·&ensp;Every number real&ensp;·&ensp;Every commit dated</p>
+</div>
+
+</body>
+</html>
