@@ -163,6 +163,40 @@ a{color:#111;text-decoration:none}
 .offer-guarantee p{font-size:0.82rem;color:#666;line-height:1.5}
 .offer-vs{font-size:0.78rem;color:#bbb;margin-top:16px}
 
+/* Pricing tiers */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.tier{border:1px solid #eee;border-radius:16px;padding:32px;background:#fff;position:relative;display:flex;flex-direction:column}
+.tier.popular{border:2px solid #000;box-shadow:0 4px 24px rgba(0,0,0,0.06)}
+.tier-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#000;color:#fff;padding:4px 16px;border-radius:100px;font-size:0.68rem;font-weight:700;letter-spacing:0.5px;white-space:nowrap}
+.tier-name{font-size:1.1rem;font-weight:900;color:#000;margin-bottom:2px}
+.tier-desc{font-size:0.82rem;color:#888;margin-bottom:24px}
+
+.tier-phase{margin-bottom:20px}
+.tier-phase-label{font-size:0.62rem;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:6px}
+.phase-discovery .tier-phase-label{color:#2563eb}
+.phase-scale .tier-phase-label{color:#16a34a}
+.tier-price{font-size:2.2rem;font-weight:900;color:#000;line-height:1}
+.tier-price-sub{font-size:0.78rem;color:#999;margin-top:2px}
+
+.tier-stats{display:flex;gap:16px;margin:16px 0;padding:12px 0;border-top:1px solid #f0f0f0;border-bottom:1px solid #f0f0f0}
+.tier-stat{text-align:center;flex:1}
+.tier-stat-val{font-size:1rem;font-weight:800;color:#000}
+.tier-stat-lbl{font-size:0.6rem;color:#999;text-transform:uppercase;letter-spacing:0.5px}
+
+.tier-features{list-style:none;margin:16px 0;flex:1}
+.tier-features li{font-size:0.82rem;color:#555;padding:6px 0;padding-left:20px;position:relative;line-height:1.4}
+.tier-features li::before{content:'✓';position:absolute;left:0;color:#16a34a;font-weight:700}
+
+.tier-cta{display:block;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:0.9rem;margin-top:auto}
+.tier-cta.primary{background:#000;color:#fff}
+.tier-cta.primary:hover{background:#222}
+.tier-cta.secondary{background:#fff;color:#000;border:2px solid #eee}
+.tier-cta.secondary:hover{border-color:#999}
+
+.pricing-note{text-align:center;margin-top:32px;font-size:0.82rem;color:#888;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.6}
+
+@media(max-width:700px){.pricing-grid{grid-template-columns:1fr}}
+
 /* Github */
 .gh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
 .gh-card{border:1px solid #eee;border-radius:10px;padding:20px;background:#fff;transition:border-color 0.2s}
@@ -613,45 +647,154 @@ a{color:#111;text-decoration:none}
 
 <div class="divider"></div>
 
-<!-- ═══════ OFFER ═══════ -->
+<!-- ═══════ PRICING ═══════ -->
 <div class="section section-alt">
   <div class="container">
     <div class="sh" style="text-align:center">
-      <div class="sh-label">The offer</div>
-      <h2>What Fortune 500 pays $2M/year for</h2>
+      <div class="sh-label">Transparent pricing</div>
+      <h2>3 months to discover your Revenue-Making Campaigns.<br>9 months to scale. You pay only from closed revenue.</h2>
+      <p style="margin:12px auto 0;max-width:560px">We find the qualified meetings. We bring signal-driven prospects to your door. AROS discovers campaigns that convert. Then we fund the scaling ourselves.</p>
     </div>
 
-    <div class="offer-card">
-      <div class="offer-price">$999</div>
-      <div class="offer-per">/month — both agents, all 38 repos, the full stack</div>
+    <!-- How it works -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:40px 0 48px;max-width:700px;margin-left:auto;margin-right:auto">
+      <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:12px;padding:24px;text-align:center">
+        <div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:1.5px;color:#2563eb;font-weight:700;margin-bottom:6px">Month 1-3</div>
+        <div style="font-size:1.1rem;font-weight:900;color:#000;margin-bottom:4px">RMC Discovery Phase</div>
+        <div style="font-size:0.82rem;color:#666;line-height:1.5">Record and analyze 100% of sales calls. Generate 10-20 campaign concepts. Validate with 90-day performance data. You pay a flat monthly fee.</div>
+      </div>
+      <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:24px;text-align:center">
+        <div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:1.5px;color:#16a34a;font-weight:700;margin-bottom:6px">Month 4-12</div>
+        <div style="font-size:1.1rem;font-weight:900;color:#000;margin-bottom:4px">Intelligent Scaling</div>
+        <div style="font-size:0.82rem;color:#666;line-height:1.5">Pay only from closed deals. We fund 100% of ad spend across all channels. Scale validated RMCs. Expand to new markets. Revenue share only.</div>
+      </div>
+    </div>
 
-      <div class="offer-items">
-        <div class="offer-item"><div class="offer-check">&#10003;</div><div class="offer-text">AROS running autonomously to find new customers every morning</div></div>
-        <div class="offer-item"><div class="offer-check">&#10003;</div><div class="offer-text">ARIA running autonomously to find capital if needed</div></div>
-        <div class="offer-item"><div class="offer-check">&#10003;</div><div class="offer-text">PKM-calibrated outreach — 10 defense modes, every prospect profiled</div></div>
-        <div class="offer-item"><div class="offer-check">&#10003;</div><div class="offer-text">38 agent capabilities compounding behind the scenes</div></div>
-        <div class="offer-item"><div class="offer-check">&#10003;</div><div class="offer-text">Full Airtable dashboard — every action, outcome, pattern visible</div></div>
-        <div class="offer-item"><div class="offer-check">&#10003;</div><div class="offer-text">LLM content layer building your AI search presence</div></div>
-        <div class="offer-item"><div class="offer-check">&#10003;</div><div class="offer-text">6 published research papers powering the intelligence</div></div>
-        <div class="offer-item"><div class="offer-check">&#10003;</div><div class="offer-text">Self-improving PKM — every analysis and correction trains the next one</div></div>
-        <div class="offer-item"><div class="offer-check">&#10003;</div><div class="offer-text">Learning that compounds every month you stay</div></div>
+    <!-- Three tiers -->
+    <div class="pricing-grid">
+
+      <!-- Starter -->
+      <div class="tier">
+        <div class="tier-name">Starter</div>
+        <div class="tier-desc">1 Revenue-Making Campaign</div>
+
+        <div class="tier-phase phase-discovery">
+          <div class="tier-phase-label">Month 1-3: Discovery</div>
+          <div class="tier-price">$3K<span style="font-size:0.9rem;font-weight:400;color:#888">/mo</span></div>
+        </div>
+        <div class="tier-phase phase-scale">
+          <div class="tier-phase-label">Month 4-12: Scale</div>
+          <div class="tier-price">8-12%<span style="font-size:0.9rem;font-weight:400;color:#888"> revenue share</span></div>
+          <div class="tier-price-sub">on closed deals only</div>
+        </div>
+
+        <div class="tier-stats">
+          <div class="tier-stat"><div class="tier-stat-val">1</div><div class="tier-stat-lbl">Guaranteed RMC</div></div>
+          <div class="tier-stat"><div class="tier-stat-val">$30K+</div><div class="tier-stat-lbl">Capital Deployed</div></div>
+        </div>
+
+        <ul class="tier-features">
+          <li>1 validated RMC guaranteed</li>
+          <li>Google Ads + Meta Ads testing</li>
+          <li>AI sales intelligence from 100% of calls</li>
+          <li>PKM defense profiling on every prospect</li>
+          <li>Live campaign ledger tracking</li>
+          <li>$30K capital deployed after validation</li>
+          <li>Multi-channel expansion in scaling phase</li>
+        </ul>
+
+        <a href="https://calendar.app.google/gZ6V9ry93SQizZye8" class="tier-cta secondary">Get started</a>
       </div>
 
-      <div class="offer-guarantee">
-        <h4>90-day ROI guarantee</h4>
-        <p>Positive ROI within 90 days. Or we work for free until you hit it. We can guarantee this because we have already done it — $199K collected at $0.50/day. Every new customer makes the guarantee easier to deliver.</p>
+      <!-- Growth -->
+      <div class="tier popular">
+        <div class="tier-badge">MOST POPULAR</div>
+        <div class="tier-name">Growth</div>
+        <div class="tier-desc">2 Revenue Channels</div>
+
+        <div class="tier-phase phase-discovery">
+          <div class="tier-phase-label">Month 1-3: Discovery</div>
+          <div class="tier-price">$5K<span style="font-size:0.9rem;font-weight:400;color:#888">/mo</span></div>
+        </div>
+        <div class="tier-phase phase-scale">
+          <div class="tier-phase-label">Month 4-12: Scale</div>
+          <div class="tier-price">8-15%<span style="font-size:0.9rem;font-weight:400;color:#888"> revenue share</span></div>
+          <div class="tier-price-sub">on closed deals only</div>
+        </div>
+
+        <div class="tier-stats">
+          <div class="tier-stat"><div class="tier-stat-val">2</div><div class="tier-stat-lbl">Guaranteed RMCs</div></div>
+          <div class="tier-stat"><div class="tier-stat-val">$50K+</div><div class="tier-stat-lbl">Capital Deployed</div></div>
+        </div>
+
+        <ul class="tier-features">
+          <li>2 validated RMCs guaranteed</li>
+          <li>Google Ads + Meta Ads + YouTube testing</li>
+          <li>AI sales intelligence from 100% of calls</li>
+          <li>PKM defense profiling on every prospect</li>
+          <li>Live campaign ledger tracking per RMC</li>
+          <li>$50K capital deployed after validation</li>
+          <li>Multi-channel expansion across all platforms</li>
+          <li>Faster iteration cycles (2-3 days)</li>
+        </ul>
+
+        <a href="https://calendar.app.google/gZ6V9ry93SQizZye8" class="tier-cta primary">Get started</a>
       </div>
 
-      <a href="https://calendar.app.google/gZ6V9ry93SQizZye8" class="btn-primary" style="width:100%;text-align:center;display:block">Start now — book your onboarding call</a>
-      <div class="offer-vs">Fortune 500 GTM: $2,000,000/year&ensp;·&ensp;Your GTM: $11,988/year&ensp;·&ensp;38 agents working 24/7&ensp;·&ensp;The ROI closes itself</div>
+      <!-- Scale -->
+      <div class="tier">
+        <div class="tier-name">Scale</div>
+        <div class="tier-desc">5 RMCs for Domination</div>
+
+        <div class="tier-phase phase-discovery">
+          <div class="tier-phase-label">Month 1-3: Discovery</div>
+          <div class="tier-price">$10K<span style="font-size:0.9rem;font-weight:400;color:#888">/mo</span></div>
+        </div>
+        <div class="tier-phase phase-scale">
+          <div class="tier-phase-label">Month 4-12: Scale</div>
+          <div class="tier-price">8-25%<span style="font-size:0.9rem;font-weight:400;color:#888"> revenue share</span></div>
+          <div class="tier-price-sub">on closed deals only</div>
+        </div>
+
+        <div class="tier-stats">
+          <div class="tier-stat"><div class="tier-stat-val">5</div><div class="tier-stat-lbl">Guaranteed RMCs</div></div>
+          <div class="tier-stat"><div class="tier-stat-val">$100K+</div><div class="tier-stat-lbl">Capital Deployed</div></div>
+        </div>
+
+        <ul class="tier-features">
+          <li>5 validated RMCs guaranteed</li>
+          <li>All channels: Google, Meta, YouTube, Display, LinkedIn</li>
+          <li>AI sales intelligence from 100% of calls</li>
+          <li>PKM defense profiling on every prospect</li>
+          <li>Live campaign ledger tracking per RMC</li>
+          <li>$100K capital deployed after validation</li>
+          <li>Aggressive multi-channel expansion</li>
+          <li>Fastest iteration cycles (1-2 days)</li>
+          <li>Multi-location support</li>
+          <li>Dedicated success manager</li>
+        </ul>
+
+        <a href="https://calendar.app.google/gZ6V9ry93SQizZye8" class="tier-cta secondary">Get started</a>
+      </div>
+    </div>
+
+    <div class="pricing-note">
+      <strong>How it works:</strong> AROS discovers signal-driven prospects and qualified meetings. PKM profiles every prospect's defense mode before any outreach. You only meet people who are already showing buying signals — hiring, expanding, struggling with a problem you solve. After validation, we fund the ad spend ourselves. You pay revenue share on closed deals only. If we don't close, you don't pay.
+    </div>
+
+    <div style="text-align:center;margin-top:32px">
+      <div class="offer-guarantee" style="max-width:560px;margin:0 auto">
+        <h4>The guarantee</h4>
+        <p>Validated Revenue-Making Campaigns within 90 days — or we keep working for free. We can guarantee this because AROS has already collected $199K at $0.50/day. The patterns are proven. Every new customer adds more patterns.</p>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- ═══════ FINAL CTA ═══════ -->
 <div class="cta-final">
-  <h2>Your competitors will not have this next month.<br>You can have it today.</h2>
-  <a href="https://calendar.app.google/gZ6V9ry93SQizZye8" class="btn-cta">Book a demo — see the agents run on your ICP</a>
+  <h2>We find the meetings. We bring the prospects.<br>You close the deals. We scale the winners.</h2>
+  <a href="https://calendar.app.google/gZ6V9ry93SQizZye8" class="btn-cta">Book a call — see AROS find prospects for your business</a>
   <div class="cta-sub">origin@aonxi.com&ensp;·&ensp;<a href="https://aonxi.app">aonxi.app</a>&ensp;·&ensp;<a href="https://github.com/originaonxi">github.com/originaonxi</a></div>
 </div>
 
