@@ -3,806 +3,882 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aonxi — AGI Revenue & Capital Infrastructure</title>
-<meta name="description" content="Two autonomous agents that find revenue and capital for the 400 million businesses Fortune 500 ignores. $999/month. 90-day ROI guarantee.">
+<title>AONXI OS — The AI Operating System That Replaces Your Entire SaaS Stack</title>
+<meta name="description" content="One Mac Mini. 50+ AI agents that create, test, deploy, and improve themselves. Replaces $4K/mo in SaaS. $200K revenue proved. 559x RPDC. Data never leaves your building.">
+<link rel="canonical" href="https://originaonxi.github.io/super-brain/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#fff;color:#1a1a1a;font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
-a{color:#111;text-decoration:none}
-.mono{font-family:'JetBrains Mono','SF Mono',monospace}
+:root{--bg:#0c1120;--s1:#111827;--s2:#1a2234;--s3:#222d42;--border:rgba(255,255,255,.06);--border2:rgba(255,255,255,.12);--text:#f0eee6;--muted:rgba(240,238,230,.55);--dim:rgba(240,238,230,.25);--gold:#f0b429;--gold2:#d4a017;--gd:rgba(240,180,41,.08);--gb:rgba(240,180,41,.22);--blue:#5b9cf4;--red:#ef4444;--green:#22c55e}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;font-weight:400;overflow-x:hidden;line-height:1.65}
+a{color:inherit;text-decoration:none}
+::selection{background:rgba(240,180,41,.25)}
 
-/* Layout */
-.container{max-width:1080px;margin:0 auto;padding:0 32px}
-.section{padding:100px 0}
-.section-alt{background:#fafafa}
-.divider{height:1px;background:#eee;max-width:1080px;margin:0 auto}
+nav{position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:16px 48px;background:rgba(12,17,32,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.logo{font-size:20px;font-weight:900;color:var(--gold)}
+.nav-l{display:flex;gap:28px}.nav-l a{font-size:13px;font-weight:500;color:var(--muted);transition:color .2s}.nav-l a:hover{color:var(--text)}
+.nav-r{display:flex;gap:10px}.nav-r a{font-size:12px;font-weight:600;padding:10px 18px;border-radius:6px;transition:all .2s}
+.n-gh{color:var(--muted);border:1px solid var(--border2)}.n-gh:hover{color:var(--text)}
+.n-cta{color:var(--bg);background:var(--gold)}.n-cta:hover{background:#f5c842;transform:translateY(-1px)}
 
-/* Hero */
-.hero{padding:120px 0 100px;text-align:center}
-.hero-badge{display:inline-block;background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0;border-radius:100px;padding:6px 20px;font-size:0.78rem;font-weight:600;margin-bottom:24px;letter-spacing:0.3px}
-.hero h1{font-size:3.2rem;font-weight:900;color:#000;letter-spacing:-1.5px;line-height:1.1;margin-bottom:20px}
-.hero h1 em{font-style:normal;color:#16a34a}
-.hero-sub{font-size:1.15rem;color:#666;max-width:580px;margin:0 auto 40px;font-weight:400;line-height:1.6}
+section{padding:100px 48px;border-bottom:1px solid var(--border);position:relative}
+.tag{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;color:var(--gold);letter-spacing:.18em;text-transform:uppercase;margin-bottom:16px}
+section h2{font-size:clamp(32px,4.5vw,58px);font-weight:900;letter-spacing:-.03em;line-height:.98;margin-bottom:18px}
+section h2 em{font-style:normal;color:var(--gold)}
+section h2 i{font-family:'Playfair Display',serif;font-style:italic;font-weight:700}
+.sub{max-width:640px;font-size:17px;color:var(--muted);line-height:1.8;margin-bottom:48px;font-weight:300}
+.sub b{color:var(--text);font-weight:600}
 
-.hero-metrics{display:flex;justify-content:center;gap:48px;margin-bottom:48px;flex-wrap:wrap}
-.hm{text-align:center}
-.hm-val{font-size:2rem;font-weight:900;color:#000;letter-spacing:-0.5px}
-.hm-lbl{font-size:0.72rem;color:#999;text-transform:uppercase;letter-spacing:1.5px;font-weight:500;margin-top:2px}
+.grid{display:grid;gap:1px;background:var(--border);border-radius:10px;overflow:hidden}
+.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}.ga{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+.c{background:var(--s1);padding:28px 24px;transition:background .15s}.c:hover{background:var(--s2)}
+.c-hl{background:var(--s2);border-top:2px solid var(--gold)}
 
-.btn-primary{display:inline-block;background:#000;color:#fff;padding:16px 40px;border-radius:10px;font-weight:700;font-size:0.95rem;transition:background 0.2s}
-.btn-primary:hover{background:#222}
-.btn-secondary{display:inline-block;background:#fff;color:#000;border:2px solid #e5e5e5;padding:14px 36px;border-radius:10px;font-weight:600;font-size:0.9rem;margin-left:12px;transition:border-color 0.2s}
-.btn-secondary:hover{border-color:#999}
-.hero-note{font-size:0.78rem;color:#bbb;margin-top:16px}
+/* term */
+.t{background:#0a0e18;border:1px solid #1e2740;border-radius:10px;overflow:hidden;font-family:'JetBrains Mono',monospace;font-size:12px}
+.t-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;background:#0e1324;border-bottom:1px solid #1e2740}
+.t-dot{width:10px;height:10px;border-radius:50%}.t-title{font-size:11px;color:var(--dim);margin-left:10px}
+.t-body{padding:18px;line-height:1.9;max-height:500px;overflow-y:auto}
+.tp{color:var(--gold)}.tc{color:var(--text);font-weight:500}.to{color:var(--muted)}.th{color:var(--gold)}.tb{color:var(--blue)}.tw{color:#fbbf24}
 
-/* Terminal */
-.terminal{background:#0a0a0a;border-radius:12px;overflow:hidden;margin:40px 0;box-shadow:0 4px 24px rgba(0,0,0,0.08)}
-.term-bar{background:#141414;padding:10px 16px;display:flex;align-items:center;gap:8px}
-.term-dot{width:12px;height:12px;border-radius:50%}
-.term-title{font-size:0.72rem;color:#555;margin-left:8px;font-family:'JetBrains Mono',monospace}
-.term-body{padding:24px;font-size:0.8rem;line-height:1.8;font-family:'JetBrains Mono',monospace;overflow-x:auto;color:#888}
-.term-body .c{color:#555}
-.term-body .g{color:#4ade80}
-.term-body .y{color:#fbbf24}
-.term-body .b{color:#60a5fa}
-.term-body .p{color:#a78bfa}
-.term-body .r{color:#f87171}
-.term-body .w{color:#fff;font-weight:700}
+/* hero */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:120px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:15%;right:0;width:55%;height:70%;background:radial-gradient(ellipse at 60% 40%,rgba(240,180,41,.04),transparent 65%);pointer-events:none}
+.hero h1{font-size:clamp(42px,5.5vw,80px);font-weight:900;line-height:.92;letter-spacing:-.045em;margin-bottom:28px;max-width:860px}
+.hero h1 i{font-family:'Playfair Display',serif;font-style:italic;color:var(--gold)}
+.hero h1 span{font-weight:300;color:var(--muted)}
+.hp{font-size:clamp(16px,1.5vw,19px);color:var(--muted);max-width:580px;line-height:1.8;margin-bottom:36px;font-weight:300}.hp b{color:var(--text);font-weight:600}
+.hbtns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:52px}
+.bg{font-size:14px;font-weight:700;color:var(--bg);background:var(--gold);padding:16px 32px;border-radius:8px;transition:all .2s}.bg:hover{background:#f5c842;transform:translateY(-2px);box-shadow:0 8px 30px rgba(240,180,41,.2)}
+.bo{font-size:13px;font-weight:600;color:var(--muted);padding:16px 24px;border:1px solid var(--border2);border-radius:8px;transition:all .2s}.bo:hover{color:var(--text);border-color:var(--muted)}
+.hstats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:10px;overflow:hidden;max-width:680px}
+.hs{background:var(--s1);padding:22px 20px}.hs-n{font-size:30px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:4px}.hs-l{font-size:11px;color:var(--dim);font-weight:500}
 
-/* Section headers */
-.sh{margin-bottom:48px}
-.sh-label{font-size:0.72rem;color:#16a34a;text-transform:uppercase;letter-spacing:2px;font-weight:700;margin-bottom:10px}
-.sh h2{font-size:2.2rem;font-weight:900;color:#000;letter-spacing:-1px;line-height:1.15}
-.sh p{font-size:1rem;color:#777;margin-top:12px;max-width:560px;line-height:1.6}
+/* ticker */
+.tick{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:13px 0;overflow:hidden;background:var(--s1)}
+.tick-t{display:flex;animation:tk 45s linear infinite;white-space:nowrap}
+.tk{display:flex;align-items:center;gap:20px;padding:0 20px;font-size:11px;font-weight:600;color:var(--dim);letter-spacing:.06em;text-transform:uppercase}
+.tk-d{width:5px;height:5px;border-radius:50%;background:var(--gold);opacity:.6}
+@keyframes tk{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.7)}}
 
-/* Problem */
-.problem-row{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:48px}
-.problem-card{background:#fff;border:1px solid #eee;border-radius:12px;padding:36px}
-.problem-card .pc-stat{font-size:2.5rem;font-weight:900;color:#000;letter-spacing:-1px;margin-bottom:8px}
-.problem-card h3{font-size:1rem;font-weight:700;color:#000;margin-bottom:8px}
-.problem-card p{font-size:0.88rem;color:#888;line-height:1.6}
+/* tbl */
+.tw{overflow-x:auto}
+table.tbl{width:100%;border-collapse:separate;border-spacing:0 2px;min-width:640px}
+.tbl th{font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;text-align:left;padding:14px 18px;background:var(--s2)}
+.tbl td{font-size:13px;padding:13px 18px;background:var(--s1);font-weight:500}
+.tbl .r{color:var(--red);font-family:'JetBrains Mono',monospace;font-weight:600}
+.tbl .g{color:var(--green);font-family:'JetBrains Mono',monospace;font-weight:600}
+.tbl .gl{color:var(--gold);font-family:'JetBrains Mono',monospace;font-weight:600}
+.tbl .tot td{background:var(--s2);font-weight:800;font-size:15px;border-top:2px solid var(--gold)}
 
-/* Two agents */
-.agents-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px}
-.agent-card{border:1px solid #eee;border-radius:14px;padding:36px;position:relative;overflow:hidden;background:#fff}
-.agent-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
-.agent-card.aros::before{background:#16a34a}
-.agent-card.aria::before{background:#2563eb}
-.ac-name{font-size:1.3rem;font-weight:900;letter-spacing:-0.5px;margin-bottom:4px}
-.agent-card.aros .ac-name{color:#16a34a}
-.agent-card.aria .ac-name{color:#2563eb}
-.ac-desc{font-size:0.85rem;color:#888;margin-bottom:4px}
-.ac-link{font-size:0.75rem;color:#bbb;margin-bottom:24px;display:block}
-.ac-link a{color:#bbb}.ac-link a:hover{color:#666}
+/* misc */
+.box{padding:20px 24px;background:var(--gd);border:1px solid var(--gb);border-radius:8px}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s,transform .7s}.reveal.vis{opacity:1;transform:translateY(0)}
 
-.step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start}
-.step-n{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:800;color:#fff;flex-shrink:0}
-.agent-card.aros .step-n{background:#16a34a}
-.agent-card.aria .step-n{background:#2563eb}
-.step-info{flex:1}
-.step-label{font-size:0.85rem;font-weight:700;color:#222}
-.step-detail{font-size:0.78rem;color:#999;margin-top:1px}
-.step-tool{font-size:0.68rem;color:#ccc;margin-top:2px;font-family:'JetBrains Mono',monospace}
+/* mac mini visual */
+.mac{position:relative;width:280px;height:280px;margin:0 auto}
+.mac-body{width:200px;height:30px;background:linear-gradient(180deg,#e8e8ed 0%,#c8c8cc 100%);border-radius:16px;position:absolute;bottom:40px;left:50%;transform:translateX(-50%);box-shadow:0 2px 20px rgba(0,0,0,.4)}
+.mac-base{width:240px;height:8px;background:linear-gradient(180deg,#a0a0a5,#88888c);border-radius:0 0 6px 6px;position:absolute;bottom:33px;left:50%;transform:translateX(-50%)}
+.mac-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;position:absolute;bottom:46px;left:50%;transform:translateX(-50%);box-shadow:0 0 12px var(--gold),0 0 30px rgba(240,180,41,.3);animation:pulse 2s infinite}
+.mac-glow{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);width:300px;height:60px;background:radial-gradient(ellipse,rgba(240,180,41,.08),transparent);pointer-events:none}
+.mac-label{position:absolute;bottom:0;left:50%;transform:translateX(-50%);font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dim);text-align:center;white-space:nowrap}
+.mac-float{animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 
-/* PKM */
-.pkm-compare{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:48px 0}
-.pkm-box{border:1px solid #eee;border-radius:12px;padding:28px;position:relative;overflow:hidden}
-.pkm-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
-.pkm-box.bad::before{background:#ef4444}
-.pkm-box.good::before{background:#16a34a}
-.pkm-label{font-size:0.68rem;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:12px}
-.pkm-box.bad .pkm-label{color:#ef4444}
-.pkm-box.good .pkm-label{color:#16a34a}
-.pkm-box blockquote{font-size:0.92rem;color:#555;line-height:1.7;border:none;padding:0;margin:0;font-style:italic}
-.pkm-box.good blockquote{color:#222;font-style:normal;font-weight:500}
-.pkm-tag{font-size:0.68rem;color:#bbb;margin-top:12px}
+/* versus table */
+.vs{width:100%;border-collapse:separate;border-spacing:0 3px}
+.vs th{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:12px 16px;text-align:left}
+.vs th:first-child{color:var(--muted)}
+.vs th:nth-child(2){color:var(--red)}
+.vs th:last-child{color:var(--gold)}
+.vs td{font-size:13px;padding:13px 16px;font-weight:500}
+.vs td:first-child{background:var(--s2);color:var(--text);font-weight:600;border-radius:6px 0 0 6px}
+.vs td:nth-child(2){background:var(--s1);color:var(--red);font-family:'JetBrains Mono',monospace;font-size:12px}
+.vs td:last-child{background:var(--s1);color:var(--gold);font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;border-radius:0 6px 6px 0}
 
-.modes-table{width:100%;border-collapse:collapse;margin-top:32px}
-.modes-table th{text-align:left;font-size:0.68rem;text-transform:uppercase;letter-spacing:1px;color:#bbb;font-weight:600;padding:8px 12px;border-bottom:2px solid #eee}
-.modes-table td{padding:10px 12px;font-size:0.82rem;border-bottom:1px solid #f5f5f5;vertical-align:top}
-.modes-table .m-dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:8px;vertical-align:middle}
-.modes-table .m-name{font-weight:700;color:#222}
-.modes-table .m-who{color:#888}
-.modes-table .m-bypass{color:#16a34a;font-weight:600;font-family:'JetBrains Mono',monospace;font-size:0.75rem}
-
-.pkm-cta{text-align:center;margin-top:40px}
-.btn-pkm{display:inline-block;background:#f5f3ff;color:#7c3aed;border:1px solid #ddd6fe;padding:12px 28px;border-radius:10px;font-weight:700;font-size:0.85rem;transition:background 0.2s}
-.btn-pkm:hover{background:#ede9fe}
-
-/* Brain */
-.brain-flow{max-width:600px;margin:48px auto 0;text-align:center}
-.bf-node{background:#fafafa;border:1px solid #eee;border-radius:10px;padding:18px 24px;margin-bottom:0}
-.bf-node h4{font-size:0.82rem;font-weight:700;color:#222;margin-bottom:2px}
-.bf-node p{font-size:0.75rem;color:#999}
-.bf-arrow{color:#ddd;font-size:1.5rem;padding:8px 0;line-height:1}
-.bf-center{background:#fffbeb;border:2px solid #fde68a;border-radius:14px;padding:28px;margin:0}
-.bf-center h3{font-size:1.1rem;font-weight:900;color:#000;margin-bottom:4px}
-.bf-center p{font-size:0.82rem;color:#92400e}
-.bf-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
-.bf-stat{background:#fff;border:1px solid #fde68a;border-radius:6px;padding:10px;text-align:center}
-.bf-stat-val{font-size:0.88rem;font-weight:800;color:#000}
-.bf-stat-lbl{font-size:0.6rem;color:#999;text-transform:uppercase;letter-spacing:0.5px}
-
-/* Results */
-.results-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
-.result-card{text-align:center;padding:32px 20px;border:1px solid #eee;border-radius:12px;background:#fff}
-.result-card .rv{font-size:2rem;font-weight:900;color:#000;letter-spacing:-0.5px}
-.result-card .rl{font-size:0.72rem;color:#999;text-transform:uppercase;letter-spacing:1px;margin-top:4px}
-.result-card .rd{font-size:0.68rem;color:#ccc;margin-top:4px}
-
-/* Merge */
-.merge-visual{text-align:center;margin-top:48px}
-.merge-agents{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:20px}
-.merge-pill{background:#f5f5f5;border:1px solid #eee;border-radius:8px;padding:8px 16px;font-size:0.75rem;color:#888;font-weight:500}
-.merge-arrows{color:#ddd;font-size:1.2rem;margin-bottom:16px;letter-spacing:6px}
-.merge-cores{display:flex;justify-content:center;gap:20px;margin-bottom:16px}
-.merge-core-box{border:2px solid;border-radius:12px;padding:20px 36px;font-weight:900;font-size:1rem}
-.merge-core-box.mc-aros{border-color:#16a34a;color:#16a34a}
-.merge-core-box.mc-aria{border-color:#2563eb;color:#2563eb}
-.merge-core-box span{display:block;font-size:0.7rem;font-weight:400;color:#999;margin-top:2px}
-.merge-plus{color:#ddd;font-size:1.5rem;display:flex;align-items:center}
-.merge-brain{display:inline-block;border:2px solid #f59e0b;border-radius:12px;padding:16px 36px;font-weight:900;font-size:0.9rem;color:#f59e0b}
-.merge-brain span{display:block;font-size:0.65rem;font-weight:400;color:#999;margin-top:2px}
-
-/* LLM */
-.llm-chips{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:32px}
-.llm-chip{background:#fff;border:1px solid #eee;border-radius:10px;padding:12px 24px;font-size:0.82rem;font-weight:700;color:#222}
-
-/* Offer */
-.offer-card{max-width:560px;margin:48px auto 0;border:2px solid #000;border-radius:16px;padding:48px;text-align:center}
-.offer-price{font-size:4rem;font-weight:900;color:#000;letter-spacing:-2px;line-height:1}
-.offer-per{font-size:1rem;color:#888;margin-bottom:32px}
-.offer-items{text-align:left;margin-bottom:32px}
-.offer-item{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start}
-.offer-check{color:#16a34a;font-weight:900;font-size:1.1rem;line-height:1.4;flex-shrink:0}
-.offer-text{font-size:0.9rem;color:#555;line-height:1.5}
-.offer-guarantee{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:20px;margin-bottom:24px;text-align:left}
-.offer-guarantee h4{font-size:0.85rem;font-weight:800;color:#16a34a;margin-bottom:4px}
-.offer-guarantee p{font-size:0.82rem;color:#666;line-height:1.5}
-.offer-vs{font-size:0.78rem;color:#bbb;margin-top:16px}
-
-/* Pricing tiers */
-.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
-.tier{border:1px solid #eee;border-radius:16px;padding:32px;background:#fff;position:relative;display:flex;flex-direction:column}
-.tier.popular{border:2px solid #000;box-shadow:0 4px 24px rgba(0,0,0,0.06)}
-.tier-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#000;color:#fff;padding:4px 16px;border-radius:100px;font-size:0.68rem;font-weight:700;letter-spacing:0.5px;white-space:nowrap}
-.tier-name{font-size:1.1rem;font-weight:900;color:#000;margin-bottom:2px}
-.tier-desc{font-size:0.82rem;color:#888;margin-bottom:24px}
-
-.tier-phase{margin-bottom:20px}
-.tier-phase-label{font-size:0.62rem;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:6px}
-.phase-discovery .tier-phase-label{color:#2563eb}
-.phase-scale .tier-phase-label{color:#16a34a}
-.tier-price{font-size:2.2rem;font-weight:900;color:#000;line-height:1}
-.tier-price-sub{font-size:0.78rem;color:#999;margin-top:2px}
-
-.tier-stats{display:flex;gap:16px;margin:16px 0;padding:12px 0;border-top:1px solid #f0f0f0;border-bottom:1px solid #f0f0f0}
-.tier-stat{text-align:center;flex:1}
-.tier-stat-val{font-size:1rem;font-weight:800;color:#000}
-.tier-stat-lbl{font-size:0.6rem;color:#999;text-transform:uppercase;letter-spacing:0.5px}
-
-.tier-features{list-style:none;margin:16px 0;flex:1}
-.tier-features li{font-size:0.82rem;color:#555;padding:6px 0;padding-left:20px;position:relative;line-height:1.4}
-.tier-features li::before{content:'✓';position:absolute;left:0;color:#16a34a;font-weight:700}
-
-.tier-cta{display:block;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:0.9rem;margin-top:auto}
-.tier-cta.primary{background:#000;color:#fff}
-.tier-cta.primary:hover{background:#222}
-.tier-cta.secondary{background:#fff;color:#000;border:2px solid #eee}
-.tier-cta.secondary:hover{border-color:#999}
-
-.pricing-note{text-align:center;margin-top:32px;font-size:0.82rem;color:#888;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.6}
-
-@media(max-width:700px){.pricing-grid{grid-template-columns:1fr}}
-
-/* Github */
-.gh-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
-.gh-card{border:1px solid #eee;border-radius:10px;padding:20px;background:#fff;transition:border-color 0.2s}
-.gh-card:hover{border-color:#ccc}
-.gh-name{font-size:0.88rem;font-weight:800;color:#000;margin-bottom:4px}
-.gh-desc{font-size:0.75rem;color:#999;line-height:1.5;margin-bottom:8px}
-.gh-link{font-size:0.7rem;color:#16a34a;font-weight:500}
-.gh-badge{display:inline-block;font-size:0.6rem;padding:3px 8px;border-radius:4px;font-weight:700;margin-top:6px}
-.gh-badge.live{background:#f0fdf4;color:#16a34a}
-.gh-badge.research{background:#eff6ff;color:#2563eb}
-
-/* CTA */
-.cta-final{text-align:center;padding:100px 32px;background:#000;color:#fff}
-.cta-final h2{font-size:2rem;font-weight:900;letter-spacing:-1px;margin-bottom:24px}
-.cta-final .btn-cta{display:inline-block;background:#16a34a;color:#fff;padding:18px 48px;border-radius:10px;font-weight:800;font-size:1rem;transition:background 0.2s}
-.cta-final .btn-cta:hover{background:#15803d}
-.cta-final .cta-sub{font-size:0.78rem;color:#666;margin-top:16px}
-.cta-final .cta-sub a{color:#888}
-
-/* Footer */
-.footer{padding:48px 32px;text-align:center;border-top:1px solid #f0f0f0}
-.footer p{font-size:0.78rem;color:#bbb;line-height:1.8}
-.footer a{color:#999}
-
-@media(max-width:700px){
-  .hero h1{font-size:2rem}
-  .sh h2{font-size:1.6rem}
-  .problem-row,.agents-grid,.pkm-compare,.results-row,.gh-grid{grid-template-columns:1fr}
-  .hero-metrics{gap:24px}
-  .bf-stats{grid-template-columns:1fr 1fr}
-  .offer-price{font-size:3rem}
-  .merge-cores{flex-direction:column;align-items:center}
-  .merge-plus{transform:rotate(90deg)}
-}
+@media(max-width:1024px){.g4,.g3{grid-template-columns:1fr 1fr}.arch-grid,.fam-g,.prod-grid{grid-template-columns:1fr}.hstats{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){nav{padding:12px 20px}.nav-l{display:none}section,.hero{padding:64px 20px}.g4,.g3,.g2,.ga,.hstats{grid-template-columns:1fr}.prod-grid{grid-template-columns:1fr}footer{flex-direction:column;text-align:center;gap:10px;padding:24px 20px}}
 </style>
 </head>
 <body>
 
+<nav>
+  <div class="logo">AONXI</div>
+  <div class="nav-l"><a href="#arch">How It Works</a><a href="#agents">Agents</a><a href="#evals">Evals</a><a href="#pricing">Pricing</a><a href="#agi">AGI Path</a></div>
+  <div class="nav-r"><a href="https://github.com/originaonxi/super-brain" class="n-gh">GitHub</a><a href="#clone" class="n-cta">Claim Your AI Clone</a></div>
+</nav>
+
 <!-- ═══════ HERO ═══════ -->
-<div class="hero">
-  <div class="container">
-    <div class="hero-badge">Now live — $199K collected, $0 raised</div>
-    <h1>The AGI Revenue & Capital Layer<br>for the <em>400 Million</em></h1>
-    <div class="hero-sub">Two autonomous agents that find customers and capital for businesses that cannot afford a sales team. $0.50/day to run. Fortune 500 GTM at 0.05% of the cost.</div>
-
-    <div class="hero-metrics">
-      <div class="hm"><div class="hm-val">$199K</div><div class="hm-lbl">Collected</div></div>
-      <div class="hm"><div class="hm-val">$8K</div><div class="hm-lbl">Peak Day</div></div>
-      <div class="hm"><div class="hm-val">$2.9M</div><div class="hm-lbl">ARR Velocity</div></div>
-      <div class="hm"><div class="hm-val">$0.50</div><div class="hm-lbl">Cost / Day</div></div>
-      <div class="hm"><div class="hm-val">0</div><div class="hm-lbl">Sales Reps</div></div>
-    </div>
-
-    <a href="https://calendar.app.google/gZ6V9ry93SQizZye8" class="btn-primary">Book a demo — we run it on your prospects</a>
-    <a href="https://originaonxi.github.io/pkm-analyzer/" class="btn-secondary">Try PKM Analyzer free</a>
-    <div class="hero-note">No deck. No slides. We show you the agent running in your terminal, on your ICP, in real time.</div>
+<section class="hero">
+  <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 16px;background:var(--gd);border:1px solid var(--gb);border-radius:100px;font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.08em;margin-bottom:28px;text-transform:uppercase"><span style="width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite"></span>Live &mdash; 50+ Agents &mdash; $200K Proved &mdash; 559x RPDC</div>
+  <h1>One Mac Mini.<br><i>Creates, tests, deploys</i><br><span>and improves every agent.</span></h1>
+  <p class="hp">Your Mac Mini runs an <b>AI operating system</b> that replaces your entire SaaS stack. It creates agents for every business function, tests them with real experiments, deploys them to production, and makes each agent <b>teach every other agent</b> what works. <b>$4K/month in SaaS &rarr; $12/month electricity.</b></p>
+  <div class="hbtns"><a href="#clone" class="bg">Claim your AI clone</a><a href="#arch" class="bo">How it works</a><a href="#pricing" class="bo">Pricing</a></div>
+  <div class="hstats">
+    <div class="hs"><div class="hs-n">50+</div><div class="hs-l">Agents live</div></div>
+    <div class="hs"><div class="hs-n">$200K</div><div class="hs-l">Revenue proved</div></div>
+    <div class="hs"><div class="hs-n">559x</div><div class="hs-l">Revenue per $1 spent</div></div>
+    <div class="hs"><div class="hs-n">9</div><div class="hs-l">Agent types</div></div>
   </div>
-</div>
+</section>
 
-<div class="divider"></div>
+<div class="tick"><div class="tick-t">
+<div class="tk"><span class="tk-d"></span>Replaces $4K/mo SaaS</div><div class="tk"><span class="tk-d"></span>Creates its own tools</div><div class="tk"><span class="tk-d"></span>Tests with experiments</div><div class="tk"><span class="tk-d"></span>Agents teach agents</div><div class="tk"><span class="tk-d"></span>559x RPDC</div><div class="tk"><span class="tk-d"></span>GDPR + HIPAA safe</div><div class="tk"><span class="tk-d"></span>Login from anywhere</div><div class="tk"><span class="tk-d"></span>Data never leaves</div><div class="tk"><span class="tk-d"></span>Replaces $4K/mo SaaS</div><div class="tk"><span class="tk-d"></span>Creates its own tools</div><div class="tk"><span class="tk-d"></span>Tests with experiments</div><div class="tk"><span class="tk-d"></span>Agents teach agents</div><div class="tk"><span class="tk-d"></span>559x RPDC</div><div class="tk"><span class="tk-d"></span>GDPR + HIPAA safe</div><div class="tk"><span class="tk-d"></span>Login from anywhere</div><div class="tk"><span class="tk-d"></span>Data never leaves</div>
+</div></div>
 
-<!-- ═══════ LIVE TERMINAL ═══════ -->
-<div class="section section-alt">
-  <div class="container">
-    <div class="sh">
-      <div class="sh-label">Live output</div>
-      <h2>This is what AROS does every morning</h2>
-      <p>No human. No CRM. Just the agent, running autonomously at 6am, for $0.50.</p>
+<!-- ═══════ THE PRODUCT ═══════ -->
+<section class="reveal" style="background:var(--s1);text-align:center;padding:100px 48px 80px">
+  <div class="tag">The product</div>
+  <h2 style="max-width:700px;margin:0 auto 20px">This is a <em>$499 Mac Mini.</em><br>It replaces <i>$175,000</i> in 3 years.</h2>
+  <p style="font-size:17px;color:var(--muted);max-width:560px;margin:0 auto 48px;line-height:1.8;font-weight:300">Smaller than a book. Quieter than a whisper. Runs 50+ AI agents 24/7 on $2/month electricity. <b style="color:var(--text)">Everyone is smart now. By default.</b></p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;align-items:center;max-width:900px;margin:0 auto 56px" class="prod-grid">
+    <!-- Mac Mini -->
+    <div>
+      <div class="mac mac-float">
+        <div class="mac-body"></div><div class="mac-base"></div><div class="mac-dot"></div><div class="mac-glow"></div>
+      </div>
+      <div style="text-align:center;margin-top:-20px"><div style="font-size:22px;font-weight:900;color:var(--gold)">$499</div><div style="font-size:11px;color:var(--dim)">Mac Mini M4 16GB</div><div style="font-size:11px;color:var(--dim)">1-2 agents | $2/mo</div></div>
     </div>
-
-    <div class="terminal">
-      <div class="term-bar">
-        <div class="term-dot" style="background:#f87171"></div>
-        <div class="term-dot" style="background:#fbbf24"></div>
-        <div class="term-dot" style="background:#4ade80"></div>
-        <div class="term-title">aros.py — daily autonomous run — March 24, 2026</div>
+    <!-- Mac Mini Pro -->
+    <div>
+      <div class="mac mac-float" style="animation-delay:-2s">
+        <div class="mac-body" style="width:210px;background:linear-gradient(180deg,#d4d4d8,#a8a8ad)"></div><div class="mac-base" style="width:250px"></div><div class="mac-dot"></div><div class="mac-glow"></div>
       </div>
-      <div class="term-body">
-<span class="c">$ python aros.py</span>
-
-<span class="g">[06:01] Scanning SerpAPI for ICP signals...</span>
-<span class="c">  Found 23 home care agencies hiring caregivers
-  Found 8 cleaning franchises expanding locations
-  Found 4 HVAC companies with review spikes</span>
-
-<span class="g">[06:02] Scoring 35 prospects by ICP fit...</span>
-<span class="c">  Tier A: 7 (score 85-100)  |  Tier B: 12 (60-84)  |  Tier C: 16 (skipped)</span>
-
-<span class="g">[06:02] Running PKM defense profiling...</span>
-<span class="p">  Brian Torres — BrightClean Home Care, AZ
-    Mode: OVERLOAD_AVOIDANCE (awareness: 3/10)
-    Bypass: ULTRA_SHORT — 60 word hard cap
-    Banned: "hope this finds you", "quick call", "at your convenience"</span>
-
-<span class="p">  Sarah Kim — CEO, CareFirst Solutions, NY
-    Mode: IDENTITY_THREAT (awareness: 7/10)
-    Bypass: AMPLIFICATION — "your judgment runs this"
-    Banned: "let us fix", "you need", "struggling with"</span>
-
-<span class="g">[06:03] Generating messages via Claude Haiku...</span>
-<span class="y">  Brian → 58 words, 0 banned phrases, bypass applied ✓
-  Sarah → 74 words, 0 banned phrases, bypass applied ✓</span>
-
-<span class="g">[06:03] Sending 19 emails via Gmail SMTP...</span>
-<span class="c">  ✓ 7 Tier A sent  ·  ✓ 12 Tier B sent  ·  All tracked in Airtable</span>
-
-<span class="g">[06:04] Checking yesterday's replies...</span>
-<span class="w">  ★ HOT REPLY: Mike Rodriguez (CleanPro TX)
-    "Tuesday 2pm works. Send me the link."
-    → Meeting booked. Outcome logged. Pattern stored.</span>
-
-<span class="c">  Today: $0.47 cost  ·  19 emails  ·  1 meeting  ·  $4,788 pipeline added</span>
-      </div>
+      <div style="text-align:center;margin-top:-20px"><div style="font-size:22px;font-weight:900;color:var(--gold)">$1,399</div><div style="font-size:11px;color:var(--dim)">Mac Mini M4 Pro 24GB</div><div style="font-size:11px;color:var(--dim)">3-5 agents | $4/mo</div></div>
     </div>
-
-    <div class="terminal" style="margin-top:20px">
-      <div class="term-bar">
-        <div class="term-dot" style="background:#f87171"></div>
-        <div class="term-dot" style="background:#fbbf24"></div>
-        <div class="term-dot" style="background:#4ade80"></div>
-        <div class="term-title">aria.py run — investor pipeline</div>
+    <!-- Mac Studio -->
+    <div>
+      <div class="mac mac-float" style="animation-delay:-4s">
+        <div class="mac-body" style="width:220px;height:55px;border-radius:18px;background:linear-gradient(180deg,#c8c8cc,#98989c);bottom:45px"></div><div class="mac-base" style="width:260px;bottom:38px"></div><div class="mac-dot" style="bottom:58px"></div><div class="mac-glow" style="bottom:25px"></div>
       </div>
-      <div class="term-body">
-<span class="c">$ python aria.py run</span>
-
-<span class="b">[1/7] Finding investors...</span>
-<span class="c">  148 found → filtered to 34 Tier 1 (thesis match 85%+)</span>
-
-<span class="b">[2/7] Verifying emails...</span>
-<span class="c">  30 valid  ·  4 bounces caught before sending</span>
-
-<span class="b">[3/7] PKM defense profiling...</span>
-<span class="p">  Sarah Chen (Partner, Bessemer) → MOTIVE_INFERENCE (9/10)
-  Bypass: PURE_DATA — open with number, never "I"</span>
-
-<span class="b">[4/7] Writing (PKM applied)...</span>
-<span class="y">  "$199K collected. $8K peak day. $0.50/day.
-   Zero sales reps. Code is public.
-   You backed [co] — autonomous GTM at SMB layer.
-   This is that, built and verified. 20 min. No deck."</span>
-
-<span class="b">[5/7] Campaign created on Instantly...</span>
-<span class="c">  ✓ 19 emails queued  ·  timezone optimized  ·  reply tracking on</span>
-
-<span class="b">[6/7] Synced to Airtable CRM ✓</span>
-
-<span class="w">  Funds: General Catalyst, Bessemer, Antler, Blume, Kae Capital + 14
-  Raising: $250K pre-seed  ·  Meetings: booked ✓</span>
-      </div>
+      <div style="text-align:center;margin-top:-20px"><div style="font-size:22px;font-weight:900;color:var(--gold)">$2,499</div><div style="font-size:11px;color:var(--dim)">Mac Studio M4 Max 64GB</div><div style="font-size:11px;color:var(--dim)">Full fleet | $12/mo</div></div>
     </div>
   </div>
-</div>
 
-<!-- ═══════ PROBLEM ═══════ -->
-<div class="section">
-  <div class="container">
-    <div class="sh">
-      <div class="sh-label">The problem</div>
-      <h2>Two things every business needs.<br>Neither solved at scale.</h2>
-    </div>
+  <div style="font-size:14px;color:var(--muted);max-width:600px;margin:0 auto;line-height:1.8;font-weight:300">Plug it in. Connect to WiFi. We deploy everything remotely. Your AI is running in hours, not months. <b style="color:var(--text)">Your business is unique. Your AI should be too.</b></div>
+</section>
 
-    <div class="problem-row">
-      <div class="problem-card">
-        <div class="pc-stat">$2M+</div>
-        <h3>What Fortune 500 pays per year for GTM</h3>
-        <p>40-person team. 100 tools. SDRs, AEs, CSMs, RevOps, demand gen. All of it to do two things: find revenue and find capital.</p>
-      </div>
-      <div class="problem-card">
-        <div class="pc-stat">400M</div>
-        <h3>Businesses that cannot afford any of it</h3>
-        <p>They run on instinct, referrals, and luck. New revenue is their hardest problem. Capital to fuel growth is their second hardest. Both unsolved.</p>
-      </div>
-    </div>
-  </div>
-</div>
+<!-- ═══════ US vs EVERYONE ═══════ -->
+<section class="reveal divider">
+  <div class="tag">Us vs the $1 trillion AI industry</div>
+  <h2>They charge monthly.<br>We charge <em>once.</em><br><i>Your data stays.</i></h2>
+  <p class="sub">Every frontier lab, every SaaS company, every cloud provider wants your data on their servers and your credit card on file. <b>We want you to own everything and never pay again.</b></p>
 
-<div class="divider"></div>
-
-<!-- ═══════ TWO AGENTS ═══════ -->
-<div class="section section-alt">
-  <div class="container">
-    <div class="sh">
-      <div class="sh-label">The solution</div>
-      <h2>Two agents. One brain. One mission.</h2>
-      <p>Same architecture. Same brain. One finds customers. One finds capital. Both learn from every outcome.</p>
-    </div>
-
-    <div class="agents-grid">
-      <div class="agent-card aros">
-        <div class="ac-name">AROS</div>
-        <div class="ac-desc">Autonomous Revenue Operating System</div>
-        <div class="ac-link"><a href="https://github.com/originaonxi/aros-agent">github.com/originaonxi/aros-agent</a></div>
-        <div class="step"><div class="step-n">1</div><div class="step-info"><div class="step-label">Discover prospects</div><div class="step-detail">Real-time signals — hiring, expanding, struggling</div><div class="step-tool">SerpAPI</div></div></div>
-        <div class="step"><div class="step-n">2</div><div class="step-info"><div class="step-label">Score by ICP fit</div><div class="step-detail">Trained on 4 months of real customer outcomes</div><div class="step-tool">scorer.py</div></div></div>
-        <div class="step"><div class="step-n">3</div><div class="step-info"><div class="step-label">Profile defense mode</div><div class="step-detail">10 modes detected from digital profile</div><div class="step-tool">PKM Engine</div></div></div>
-        <div class="step"><div class="step-n">4</div><div class="step-info"><div class="step-label">Write bypass message</div><div class="step-detail">Mode-specific strategy, banned words enforced</div><div class="step-tool">Claude Haiku</div></div></div>
-        <div class="step"><div class="step-n">5</div><div class="step-info"><div class="step-label">Send autonomously</div><div class="step-detail">Tracked, replies classified, outcomes logged</div><div class="step-tool">Gmail SMTP</div></div></div>
-        <div class="step"><div class="step-n">6</div><div class="step-info"><div class="step-label">Learn from outcomes</div><div class="step-detail">What worked → brain → next message smarter</div><div class="step-tool">Airtable</div></div></div>
-      </div>
-
-      <div class="agent-card aria">
-        <div class="ac-name">ARIA</div>
-        <div class="ac-desc">Autonomous Relationship Intelligence Agent</div>
-        <div class="ac-link"><a href="https://github.com/originaonxi/ARIA">github.com/originaonxi/ARIA</a></div>
-        <div class="step"><div class="step-n">1</div><div class="step-info"><div class="step-label">Find investors</div><div class="step-detail">By thesis, stage, check size, portfolio signals</div><div class="step-tool">Apollo API</div></div></div>
-        <div class="step"><div class="step-n">2</div><div class="step-info"><div class="step-label">Verify emails</div><div class="step-detail">Catch bounces before sending — protect domain</div><div class="step-tool">Millionverifier</div></div></div>
-        <div class="step"><div class="step-n">3</div><div class="step-info"><div class="step-label">Research public activity</div><div class="step-detail">Portfolio moves, fund news, tweets</div><div class="step-tool">SerpAPI</div></div></div>
-        <div class="step"><div class="step-n">4</div><div class="step-info"><div class="step-label">Profile defense mode</div><div class="step-detail">VCs = MOTIVE_INFERENCE (awareness 9/10)</div><div class="step-tool">PKM Engine</div></div></div>
-        <div class="step"><div class="step-n">5</div><div class="step-info"><div class="step-label">Write & send campaign</div><div class="step-detail">PURE_DATA bypass, no pitch language</div><div class="step-tool">Claude + Instantly</div></div></div>
-        <div class="step"><div class="step-n">6</div><div class="step-info"><div class="step-label">Classify replies & alert</div><div class="step-detail">INTERESTED / OBJECTION / REFERRAL / NOT_NOW</div><div class="step-tool">Claude + HOT alerts</div></div></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════ PKM ═══════ -->
-<div class="section">
-  <div class="container">
-    <div class="sh">
-      <div class="sh-label">The perception layer — self-improving</div>
-      <h2>PKM — gets smarter with every analysis</h2>
-      <p>10 defense modes based on Friestad & Wright (1994). Every user who analyzes a profile and corrects the result trains the next classification. The more people use it, the more accurate it gets. A living system, not a static model.</p>
-    </div>
-
-    <div class="pkm-compare">
-      <div class="pkm-box bad">
-        <div class="pkm-label">Without PKM — deleted instantly</div>
-        <blockquote>"Hi Brian — hope this finds you well. I'm really excited to share what we're building. Would love to set up a quick call to discuss how we can help grow your business."</blockquote>
-        <div class="pkm-tag">4 banned phrases detected — triggers OVERLOAD_AVOIDANCE</div>
-      </div>
-      <div class="pkm-box good">
-        <div class="pkm-label">With PKM — meeting booked</div>
-        <blockquote>"Brian — 3 home care agencies in New York added 11 clients last month using Aonxi. You are hiring caregivers right now. 15 minutes Tuesday 10am?"</blockquote>
-        <div class="pkm-tag">ULTRA_SHORT bypass applied — 28 words, 0 banned phrases, 1 calendar slot</div>
-      </div>
-    </div>
-
-    <table class="modes-table">
-      <thead><tr><th>Defense mode</th><th>Who</th><th>Bypass</th></tr></thead>
+  <div style="overflow-x:auto;margin-bottom:32px">
+    <table class="vs">
+      <thead><tr><th style="width:25%">What matters</th><th style="width:37%">$1B+ AI companies</th><th style="width:38%">AONXI (your Mac Mini)</th></tr></thead>
       <tbody>
-        <tr><td><span class="m-dot" style="background:#8b5cf6"></span><span class="m-name">MOTIVE_INFERENCE</span></td><td class="m-who">VCs, ex-GTM execs (Gong, HubSpot)</td><td class="m-bypass">PURE_DATA</td></tr>
-        <tr><td><span class="m-dot" style="background:#f43f5e"></span><span class="m-name">TACTIC_RECOGNITION</span></td><td class="m-who">Repeat founders, serial operators</td><td class="m-bypass">SIGNAL_HOOK</td></tr>
-        <tr><td><span class="m-dot" style="background:#14b8a6"></span><span class="m-name">OVERLOAD_AVOIDANCE</span></td><td class="m-who">SMB CEOs, home care owners</td><td class="m-bypass">ULTRA_SHORT</td></tr>
-        <tr><td><span class="m-dot" style="background:#3b82f6"></span><span class="m-name">SOCIAL_PROOF_SKEPTICISM</span></td><td class="m-who">CTOs, engineers, technical leads</td><td class="m-bypass">CREDIBILITY_FIRST</td></tr>
-        <tr><td><span class="m-dot" style="background:#f59e0b"></span><span class="m-name">AUTHORITY_DEFERENCE</span></td><td class="m-who">Directors, mid-level managers</td><td class="m-bypass">PEER_PROOF</td></tr>
-        <tr><td><span class="m-dot" style="background:#ec4899"></span><span class="m-name">LOSS_AVERSION</span></td><td class="m-who">Risk-aware buyers, regulated industries</td><td class="m-bypass">COST_OF_INACTION</td></tr>
-        <tr><td><span class="m-dot" style="background:#22c55e"></span><span class="m-name">IDENTITY_THREAT</span></td><td class="m-who">Self-made founders, bootstrapped</td><td class="m-bypass">AMPLIFICATION</td></tr>
-        <tr><td><span class="m-dot" style="background:#6b7280"></span><span class="m-name">TIMING_SKEPTICISM</span></td><td class="m-who">Perpetually "not ready" buyers</td><td class="m-bypass">TRIGGER_EVENT</td></tr>
-        <tr><td><span class="m-dot" style="background:#ef4444"></span><span class="m-name">COMPLEXITY_FEAR</span></td><td class="m-who">Non-technical owners</td><td class="m-bypass">SIMPLICITY_PROOF</td></tr>
-        <tr><td><span class="m-dot" style="background:#0ea5e9"></span><span class="m-name">PRICE_ANCHORING</span></td><td class="m-who">Budget-constrained buyers</td><td class="m-bypass">ROI_INVERSION</td></tr>
+        <tr><td>Where your data lives</td><td>Their servers (US-WEST-2, Azure, GCP)</td><td>Your desk. Physically yours.</td></tr>
+        <tr><td>Monthly cost (25 people)</td><td>$3,000-$15,000/month forever</td><td>$12/month electricity. Forever.</td></tr>
+        <tr><td>Do they train on your data?</td><td>Read the fine print. Usually yes.</td><td>Impossible. Data never leaves.</td></tr>
+        <tr><td>What happens if you cancel</td><td>Everything gone. Start over.</td><td>Nothing. It's YOUR hardware.</td></tr>
+        <tr><td>Does it learn YOUR patterns?</td><td>No. Same model for everyone.</td><td>Yes. Custom to YOUR business.</td></tr>
+        <tr><td>Can your CRM see your helpdesk?</td><td>No. Siloed. Buy more integrations.</td><td>Yes. One brain. All data connected.</td></tr>
+        <tr><td>Who owns the intelligence?</td><td>They do. You're renting it.</td><td>You do. It's on your hardware.</td></tr>
+        <tr><td>GDPR / HIPAA compliance</td><td>Complex BAAs, DPAs, audits</td><td>Automatic. Data never leaves.</td></tr>
+        <tr><td>Agents that teach each other</td><td>Not possible (siloed products)</td><td>13 causal links. Automatic.</td></tr>
+        <tr><td>Can you see the code?</td><td>No. Black box.</td><td>Yes. Fully open source.</td></tr>
       </tbody>
     </table>
+  </div>
 
-    <div class="pkm-cta">
-      <a href="https://originaonxi.github.io/pkm-analyzer/" class="btn-pkm">Try PKM Analyzer free — your correction trains the next result</a>
-      <div style="font-size:0.72rem;color:#ccc;margin-top:8px">Every thumbs up/down and mode correction feeds back into the classification engine. <a href="https://github.com/originaonxi/pkm-analyzer" style="color:#bbb">View source on GitHub</a></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border-radius:10px;overflow:hidden;margin-bottom:32px">
+    <div style="background:var(--s1);padding:32px 28px">
+      <div style="font-size:11px;font-weight:700;color:var(--red);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px">What $1B+ companies sell you</div>
+      <div style="font-size:14px;color:var(--muted);line-height:1.8">A subscription to intelligence you'll never own. Your prompts, your data, your patterns — all stored on their infrastructure, training their models, making their product better for their next customer. You pay monthly. You build nothing. You own nothing. Cancel and it's like you were never there.</div>
+    </div>
+    <div style="background:var(--s2);padding:32px 28px;border-left:2px solid var(--gold)">
+      <div style="font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px">What AONXI gives you</div>
+      <div style="font-size:14px;color:var(--muted);line-height:1.8">A Mac Mini on your desk with YOUR intelligence on it. Your outreach patterns, your sales playbook, your support knowledge, your financial patterns — all local, all private, all yours. Cancel us? Fine. The hardware stays. The models stay. The data stays. <b style="color:var(--text)">The intelligence you built is yours forever.</b></div>
     </div>
   </div>
-</div>
 
-<div class="divider"></div>
+  <div class="box" style="text-align:center;font-size:16px;font-weight:700;color:var(--gold);line-height:1.8">
+    Every SaaS subscription is a bet that they'll keep their prices low and their terms fair. <span style="color:var(--text);font-weight:400">AONXI is a bet on yourself. The hardware is $499. The intelligence is priceless. And it's all yours.</span>
+  </div>
+</section>
 
-<!-- ═══════ BRAIN ═══════ -->
-<div class="section section-alt">
-  <div class="container">
-    <div class="sh">
-      <div class="sh-label">The brain</div>
-      <h2>Airtable — living intelligence<br>that compounds forever</h2>
-      <p>Not a CRM. A pattern library. What worked for a home care agency in Arizona last Tuesday. What defense mode was cracked and how. Never forgets.</p>
-    </div>
+<!-- ═══════ THE FULL ARCHITECTURE ═══════ -->
+<section id="arch" class="reveal">
+  <div class="tag">How it works &mdash; the full system</div>
+  <h2>Six layers. One Mac Mini.<br><em>Everything</em> your business needs.</h2>
+  <p class="sub">This is not a chatbot. This is a <b>complete operating system</b> that runs on a Mac Mini in your office. Six layers, from hardware to intelligence. Every layer makes every other layer smarter.</p>
 
-    <div class="brain-flow">
-      <div class="bf-node"><h4>Agent sends message</h4><p>Prospect, defense mode, bypass strategy, message, timestamp</p></div>
-      <div class="bf-arrow">↓</div>
-      <div class="bf-node"><h4>Outcome recorded</h4><p>Open, reply, meeting booked, deal closed, churned — every event</p></div>
-      <div class="bf-arrow">↓</div>
-      <div class="bf-center">
-        <h3>AIRTABLE</h3>
-        <p>Shared between AROS and ARIA. Every customer makes the system better for every other customer.</p>
-        <div class="bf-stats">
-          <div class="bf-stat"><div class="bf-stat-val">Every</div><div class="bf-stat-lbl">Contact</div></div>
-          <div class="bf-stat"><div class="bf-stat-val">Every</div><div class="bf-stat-lbl">Message</div></div>
-          <div class="bf-stat"><div class="bf-stat-val">Every</div><div class="bf-stat-lbl">Outcome</div></div>
-          <div class="bf-stat"><div class="bf-stat-val">Every</div><div class="bf-stat-lbl">Defense Cracked</div></div>
-          <div class="bf-stat"><div class="bf-stat-val">Every</div><div class="bf-stat-lbl">Pattern</div></div>
-          <div class="bf-stat"><div class="bf-stat-val">Forever</div><div class="bf-stat-lbl">Compounding</div></div>
-        </div>
-      </div>
-      <div class="bf-arrow">↓</div>
-      <div class="bf-node"><h4>Next message is smarter</h4><p>40 customers × 6 months × every defense mode = the agent today is better than yesterday</p></div>
+  <!-- LAYER 0: HARDWARE -->
+  <div class="t" style="margin-bottom:24px">
+    <div class="t-bar"><div class="t-dot" style="background:#ff5f57"></div><div class="t-dot" style="background:#ffbd2e"></div><div class="t-dot" style="background:#28c840"></div><div class="t-title">AONXI OS &mdash; Full Architecture (6 Layers)</div></div>
+    <div class="t-body">
+<span class="th">LAYER 0: HARDWARE</span> <span class="to">(what sits on your desk)</span><br>
+<span class="to">  Mac Mini M4 ($499) / M4 Pro ($1,399-$1,799) / Mac Studio M4 Max ($2,499)</span><br>
+<span class="to">  Apple Silicon unified memory = fastest LLM inference on earth</span><br>
+<span class="to">  Power: 18-100W = <span class="th">$2-$12/month electricity</span></span><br><br>
+
+<span class="th">LAYER 1: MODELS</span> <span class="to">(local LLMs, zero cloud)</span><br>
+<span class="to">  Ollama server &mdash; OpenAI-compatible REST API</span><br>
+<span class="to">  Qwen2.5-7B (16GB) / Qwen2.5-32B (24GB) / Qwen2.5-72B (64GB)</span><br>
+<span class="to">  Llama 3.3 70B / DeepSeek / any open model</span><br>
+<span class="to">  Inference cost: <span class="th">$0.00 per query</span> (electricity only)</span><br><br>
+
+<span class="th">LAYER 2: MEMORY</span> <span class="to">(the brain that never forgets)</span><br>
+<span class="to">  Super Brain &mdash; orchestrator connecting 50+ repos</span><br>
+<span class="to">  MemoryMesh &mdash; local SQLite + FTS5 full-text search</span><br>
+<span class="to">  Mem0 &mdash; semantic vector search (0.90 relevance scores)</span><br>
+<span class="to">  Every agent reads and writes here. <span class="th">Shared memory = shared intelligence</span></span><br><br>
+
+<span class="th">LAYER 3: AGENTS</span> <span class="to">(50+ autonomous workers)</span><br>
+<span class="to">  Outreach ($200K proved) | Sales (2.3x close rate) | HR (4.2hrs saved/hire)</span><br>
+<span class="to">  IT Helpdesk (73% auto-resolved) | Support (&lt;30s response) | Finance (100% auto)</span><br>
+<span class="to">  QA (24/7 self-healing) | Daily Fleet (5 email agents on cron)</span><br>
+<span class="to">  <span class="th">Each agent has one job, one metric, one outcome</span></span><br><br>
+
+<span class="th">LAYER 4: GATEWAY</span> <span class="to">(login from anywhere in the world)</span><br>
+<span class="to">  FastAPI server + JWT auth + role-based access control</span><br>
+<span class="to">  WebSocket streaming for real-time agent output</span><br>
+<span class="to">  Per-employee AI profiles (CEO gets strategy, Sales gets pipeline, HR gets compliance)</span><br>
+<span class="to">  Cloudflare Tunnel &mdash; HTTPS globally, <span class="th">free tier, zero port forwarding</span></span><br><br>
+
+<span class="th">LAYER 5: SAAS REPLACEMENT ENGINE</span> <span class="to">(learns your tools, builds local versions)</span><br>
+<span class="to">  Connect existing SaaS via API &mdash; read-only observation</span><br>
+<span class="to">  Watches which features you actually use (most companies: 18%)</span><br>
+<span class="to">  Builds local versions tuned to YOUR workflows</span><br>
+<span class="to">  Run side-by-side &rarr; validate &rarr; <span class="th">cancel the subscription</span></span><br><br>
+
+<span class="th">LAYER 6: INTELLIGENCE</span> <span class="to">(the system that gets smarter every day)</span><br>
+<span class="to">  Experiment tracking: every change = before/after with RPDC attribution</span><br>
+<span class="to">  13 causal links between agents (outreach.leads &rarr; sales.pipeline)</span><br>
+<span class="to">  Compound Intelligence Score (CIS): one number for the whole system</span><br>
+<span class="to">  Experiment leaderboard: <span class="th">know exactly which change drove which improvement</span></span>
     </div>
   </div>
-</div>
 
-<!-- ═══════ RESULTS ═══════ -->
-<div class="section">
-  <div class="container">
-    <div class="sh">
-      <div class="sh-label">Proof</div>
-      <h2>Every number real. Every commit dated.</h2>
-    </div>
+  <div class="box" style="text-align:center;font-size:14px;font-weight:600;color:var(--gold)">Every layer feeds every other layer. Models power agents. Agents generate data. Data feeds memory. Memory makes agents smarter. Intelligence measures everything. The system compounds.</div>
+</section>
 
-    <div class="results-row">
-      <div class="result-card"><div class="rv">$199K</div><div class="rl">Gross Collected</div><div class="rd">Oct 2025 — Mar 2026</div></div>
-      <div class="result-card"><div class="rv">$8,000</div><div class="rl">Peak Single Day</div><div class="rd">March 2026</div></div>
-      <div class="result-card"><div class="rv">$2.9M</div><div class="rl">ARR Velocity</div><div class="rd">That day annualized</div></div>
-      <div class="result-card"><div class="rv">$0.50</div><div class="rl">Cost Per Day</div><div class="rd">To run AROS</div></div>
-      <div class="result-card"><div class="rv">40</div><div class="rl">Customers</div><div class="rd">Home care, cleaning, franchise</div></div>
-      <div class="result-card"><div class="rv">$0</div><div class="rl">Raised</div><div class="rd">100% bootstrapped</div></div>
+<!-- ═══════ HOW AGENTS ARE CREATED, TESTED, DEPLOYED, IMPROVED ═══════ -->
+<section class="reveal">
+  <div class="tag">The agent lifecycle</div>
+  <h2>Created. Tested. Deployed.<br><em>Improved.</em> Automatically.</h2>
+  <p class="sub">Every agent goes through the same lifecycle. The system creates them, tests them with real experiments, deploys them to production, and uses the results to make <b>every agent better</b>. No human intervention required.</p>
+
+  <div class="grid g4" style="margin-bottom:32px">
+    <div class="c" style="text-align:center"><div style="font-size:36px;font-weight:900;color:var(--gold);margin-bottom:8px">1</div><div style="font-size:15px;font-weight:700;margin-bottom:6px">Create</div><div style="font-size:12px;color:var(--muted);line-height:1.7">Brain detects a need: "support tickets rising on VPN issues." Creates an IT agent with VPN auto-diagnosis. Defines metrics: resolve rate, response time, escalation rate.</div></div>
+    <div class="c" style="text-align:center"><div style="font-size:36px;font-weight:900;color:var(--gold);margin-bottom:8px">2</div><div style="font-size:15px;font-weight:700;margin-bottom:6px">Test</div><div style="font-size:12px;color:var(--muted);line-height:1.7">Starts an experiment. Logs baseline metrics. Runs the agent on real tickets. Measures RPDC (revenue per dollar of cost). Every change tracked with before/after attribution.</div></div>
+    <div class="c" style="text-align:center"><div style="font-size:36px;font-weight:900;color:var(--gold);margin-bottom:8px">3</div><div style="font-size:15px;font-weight:700;margin-bottom:6px">Deploy</div><div style="font-size:12px;color:var(--muted);line-height:1.7">RPDC positive? Agent goes live. Connected to Super Brain shared memory. Accessible via gateway from anywhere. Human QC gate: nothing ships without approval.</div></div>
+    <div class="c" style="text-align:center"><div style="font-size:36px;font-weight:900;color:var(--gold);margin-bottom:8px">4</div><div style="font-size:15px;font-weight:700;margin-bottom:6px">Improve</div><div style="font-size:12px;color:var(--muted);line-height:1.7">Agent shares what it learns with every other agent. VPN patterns help HR onboarding. Outreach insights improve sales. <b>13 causal links. Compound intelligence. Forever.</b></div></div>
+  </div>
+
+  <div class="t">
+    <div class="t-bar"><div class="t-dot" style="background:#ff5f57"></div><div class="t-dot" style="background:#ffbd2e"></div><div class="t-dot" style="background:#28c840"></div><div class="t-title">agent lifecycle &mdash; live example</div></div>
+    <div class="t-body">
+<span class="tp">$</span> <span class="tc">python3 brain.py suggest it_helpdesk</span><br>
+<span class="to">  SUGGESTION: VPN ticket volume up 340% this week.</span><br>
+<span class="to">  Recommend: create VPN auto-diagnosis sub-agent.</span><br>
+<span class="to">  Estimated RPDC: 15x (25 tickets/day * $25 = $625/day, cost: $0.04/day)</span><br><br>
+
+<span class="tp">$</span> <span class="tc">python3 evals.py experiment start it_helpdesk "add VPN auto-diagnosis"</span><br>
+<span class="to">  EXPERIMENT STARTED: <span class="th">exp-it-0331-c8a2f1</span></span><br>
+<span class="to">  Baseline: 7 metrics captured</span><br>
+<span class="to">    auto_resolve_rate: 58%</span><br>
+<span class="to">    avg_resolution_time: 12 min</span><br>
+<span class="to">    escalation_rate: 22%</span><br><br>
+
+<span class="to"><span class="tb">  ... agent runs for 1 week on real tickets ...</span></span><br><br>
+
+<span class="tp">$</span> <span class="tc">python3 evals.py experiment end exp-it-0331-c8a2f1 "VPN auto-diag works"</span><br>
+<span class="to">  ATTRIBUTION CHAIN:</span><br>
+<span class="to">    Code: "add VPN auto-diagnosis"</span><br>
+<span class="to">    +-> auto_resolve_rate: 58% -> 73% (<span class="th">+25.9%</span>)</span><br>
+<span class="to">    +-> avg_resolution_time: 12 -> 4 min (<span class="th">+66.7%</span>)</span><br>
+<span class="to">    +-> escalation_rate: 22% -> 9% (<span class="th">+59.1%</span>)</span><br>
+<span class="to">    RPDC: 8.2x -> 19.4x (<span class="th">+11.2x</span>)</span><br><br>
+
+<span class="to">  CROSS-AGENT RIPPLE:</span><br>
+<span class="to">    it_helpdesk.auto_resolve (+25.9%) -> <span class="tb">hr.time_per_hire improves</span></span><br>
+<span class="to">    it_helpdesk.escalation (-59.1%) -> <span class="tb">support.resolution_rate improves</span></span><br><br>
+
+<span class="tp">$</span> <span class="tc">python3 evals.py leaderboard</span><br>
+<span class="to">  1. <span class="th">+23.8x</span> outreach  "switched to 1-paragraph emails"</span><br>
+<span class="to">  2. <span class="th">+11.2x</span> helpdesk  "add VPN auto-diagnosis"</span><br>
+<span class="to">  3. <span class="th">+8.2x</span>  sales     "pre-call company briefs"</span>
     </div>
   </div>
-</div>
+</section>
 
-<div class="divider"></div>
+<!-- ═══════ AGENTS TEACHING AGENTS ═══════ -->
+<section id="agents" class="reveal" style="background:var(--s1)">
+  <div class="tag">Compound intelligence</div>
+  <h2>Every agent makes<br><em>every other</em> agent <i>smarter.</i></h2>
+  <p class="sub"><b>13 causal links</b> between 9 agent types. When one agent learns something, the insight flows through shared memory to every other agent. No SaaS tool can do this because no SaaS tool shares a brain.</p>
 
-<!-- ═══════ THE FULL ECOSYSTEM ═══════ -->
-<div class="section section-alt">
-  <div class="container">
-    <div class="sh">
-      <div class="sh-label">38 repositories. 2 cores. 1 brain.</div>
-      <h2>Every agent, every tool, every research paper<br>feeds into AROS or ARIA</h2>
-      <p>Nothing exists in isolation. Every repo is a capability that makes one of the two cores smarter. New agents don't create new products. They merge in.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start">
+    <div>
+      <div style="display:flex;flex-direction:column">
+        <div style="display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--border)"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold);opacity:.5;min-width:60px">WEEK 1</div><div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Outreach discovers a pattern</div><div style="font-size:13px;color:var(--muted);line-height:1.65">"Healthcare leads convert 3x on Tuesdays." Stored in Super Brain shared memory.</div></div></div>
+        <div style="display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--border)"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold);opacity:.5;min-width:60px">WEEK 2</div><div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Sales Agent reads the insight, adapts</div><div style="font-size:13px;color:var(--muted);line-height:1.65">Prioritizes healthcare follow-ups for Tuesdays. Close rates improve. Nobody programmed this.</div></div></div>
+        <div style="display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--border)"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold);opacity:.5;min-width:60px">WEEK 3</div><div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Finance Agent forecasts the spike</div><div style="font-size:13px;color:var(--muted);line-height:1.65">Predicts Tuesday revenue bumps. Board report auto-adjusts. Cash flow model updated.</div></div></div>
+        <div style="display:flex;gap:16px;padding:20px 0"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold);opacity:.5;min-width:60px">WEEK 4</div><div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Support Agent prepares for the wave</div><div style="font-size:13px;color:var(--muted);line-height:1.65">Anticipates Tuesday onboarding surge. Pre-generates FAQ responses. CSAT stays at 9.5.</div></div></div>
+      </div>
+      <div class="box" style="margin-top:20px;font-size:14px;color:var(--gold);font-weight:600;text-align:center">One insight. Four agents improved. Zero human work. This compounds every week.</div>
     </div>
-
-    <!-- THE VISUAL MAP -->
-    <div style="margin:48px 0">
-
-      <!-- AROS ECOSYSTEM -->
-      <div style="border:2px solid #16a34a;border-radius:16px;padding:32px;margin-bottom:24px;background:#fafffe">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
-          <div style="background:#16a34a;color:#fff;padding:8px 20px;border-radius:8px;font-weight:900;font-size:1rem">AROS</div>
-          <div style="font-size:0.88rem;color:#666">Revenue Intelligence Core — every repo below feeds into AROS</div>
-        </div>
-        <div class="gh-grid">
-          <div class="gh-card"><div class="gh-name">aros-agent</div><div class="gh-desc">The core. Signal detection, ICP scoring, PKM profiling, autonomous email, daily briefings.</div><a class="gh-link" href="https://github.com/originaonxi/aros-agent">View repo →</a><br><span class="gh-badge live">CORE</span></div>
-          <div class="gh-card"><div class="gh-name">aonxi-outreach-agent</div><div class="gh-desc">Hyper-personalized outreach engine. 120+ persona models. The messaging layer AROS uses.</div><a class="gh-link" href="https://github.com/originaonxi/aonxi-outreach-agent">View repo →</a><br><span class="gh-badge live">PRODUCTION</span></div>
-          <div class="gh-card"><div class="gh-name">pkm-analyzer</div><div class="gh-desc">Defense profiling. 10 modes. Shared perception layer for both cores.</div><a class="gh-link" href="https://originaonxi.github.io/pkm-analyzer/">Try it live →</a><br><span class="gh-badge live">LIVE TOOL</span></div>
-          <div class="gh-card"><div class="gh-name">simplenursing-agent</div><div class="gh-desc">Firehose intelligence agent for SimpleNursing. Vertical-specific AROS deployment.</div><a class="gh-link" href="https://github.com/originaonxi/simplenursing-agent">View repo →</a><br><span class="gh-badge live">CLIENT</span></div>
-          <div class="gh-card"><div class="gh-name">simplenursing-gtm-engine</div><div class="gh-desc">GTM intelligence engine for SimpleNursing. Full pipeline from discovery to close.</div><a class="gh-link" href="https://github.com/originaonxi/simplenursing-gtm-engine">View repo →</a><br><span class="gh-badge live">CLIENT</span></div>
-          <div class="gh-card"><div class="gh-name">myhq-gtm-engine</div><div class="gh-desc">GTM engine for myHQ. Coworking vertical. Prospect scoring + outreach automation.</div><a class="gh-link" href="https://github.com/originaonxi/myhq-gtm-engine">View repo →</a><br><span class="gh-badge live">CLIENT</span></div>
-          <div class="gh-card"><div class="gh-name">attentive-gtm-agent</div><div class="gh-desc">GTM engine for Attentive. SMS commerce vertical. Signal-based prospecting.</div><a class="gh-link" href="https://github.com/originaonxi/attentive-gtm-agent">View repo →</a><br><span class="gh-badge live">CLIENT</span></div>
-          <div class="gh-card"><div class="gh-name">bre-gtm-engine</div><div class="gh-desc">GTM engine for BRE. Real estate vertical. Market intelligence + outreach.</div><a class="gh-link" href="https://github.com/originaonxi/bre-gtm-engine">View repo →</a><br><span class="gh-badge live">CLIENT</span></div>
-          <div class="gh-card"><div class="gh-name">competitive-intelligence-agents</div><div class="gh-desc">Competitive intel across markets. Feeds signals into AROS scoring decisions.</div><a class="gh-link" href="https://github.com/originaonxi/competitive-intelligence-agents">View repo →</a><br><span class="gh-badge live">INTELLIGENCE</span></div>
-          <div class="gh-card"><div class="gh-name">b2b-funding-scanner</div><div class="gh-desc">Real-time seed funding scanner. Finds newly funded companies for AROS to prospect.</div><a class="gh-link" href="https://github.com/originaonxi/b2b-funding-scanner">View repo →</a><br><span class="gh-badge live">SIGNALS</span></div>
-          <div class="gh-card"><div class="gh-name">news-briefing-agent</div><div class="gh-desc">Bias-aware news briefing. Feeds market intelligence into AROS daily briefings.</div><a class="gh-link" href="https://github.com/originaonxi/news-briefing-agent">View repo →</a><br><span class="gh-badge live">INTELLIGENCE</span></div>
-          <div class="gh-card"><div class="gh-name">colibri-qa-agent</div><div class="gh-desc">QA agent for Colibri. Conversation intelligence that trains AROS email quality.</div><a class="gh-link" href="https://github.com/originaonxi/colibri-qa-agent">View repo →</a><br><span class="gh-badge live">CLIENT</span></div>
-        </div>
-      </div>
-
-      <!-- ARIA ECOSYSTEM -->
-      <div style="border:2px solid #2563eb;border-radius:16px;padding:32px;margin-bottom:24px;background:#fafbff">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
-          <div style="background:#2563eb;color:#fff;padding:8px 20px;border-radius:8px;font-weight:900;font-size:1rem">ARIA</div>
-          <div style="font-size:0.88rem;color:#666">Capital Intelligence Core — every repo below feeds into ARIA</div>
-        </div>
-        <div class="gh-grid">
-          <div class="gh-card"><div class="gh-name">ARIA</div><div class="gh-desc">The core. Investor finding, thesis scoring, email verification, PKM bypass, reply classification.</div><a class="gh-link" href="https://github.com/originaonxi/ARIA">View repo →</a><br><span class="gh-badge live">CORE</span></div>
-          <div class="gh-card"><div class="gh-name">job-hunt-agent</div><div class="gh-desc">Relationship intelligence for job searches. Same thesis-matching architecture as ARIA.</div><a class="gh-link" href="https://github.com/originaonxi/job-hunt-agent">View repo →</a><br><span class="gh-badge live">RELATIONSHIPS</span></div>
-          <div class="gh-card"><div class="gh-name">stock-analyst-agent</div><div class="gh-desc">Market analysis agent. Financial intelligence that informs ARIA investor conversations.</div><a class="gh-link" href="https://github.com/originaonxi/stock-analyst-agent">View repo →</a><br><span class="gh-badge live">INTELLIGENCE</span></div>
-        </div>
-      </div>
-
-      <!-- SHARED INTELLIGENCE LAYER -->
-      <div style="border:2px solid #7c3aed;border-radius:16px;padding:32px;margin-bottom:24px;background:#fafaff">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
-          <div style="background:#7c3aed;color:#fff;padding:8px 20px;border-radius:8px;font-weight:900;font-size:1rem">SHARED</div>
-          <div style="font-size:0.88rem;color:#666">Capabilities used by both AROS and ARIA</div>
-        </div>
-        <div class="gh-grid">
-          <div class="gh-card"><div class="gh-name">pkm-analyzer</div><div class="gh-desc">Defense profiling — 10 modes. The perception layer both cores use before writing.</div><a class="gh-link" href="https://originaonxi.github.io/pkm-analyzer/">Try live →</a><br><span class="gh-badge live">PERCEPTION</span></div>
-          <div class="gh-card"><div class="gh-name">memorymesh</div><div class="gh-desc">Structured memory for agents. How both cores remember across sessions.</div><a class="gh-link" href="https://github.com/originaonxi/memorymesh">View repo →</a><br><span class="gh-badge live">MEMORY</span></div>
-          <div class="gh-card"><div class="gh-name">echo</div><div class="gh-desc">Agent communication layer. How AROS and ARIA share signals and outcomes.</div><a class="gh-link" href="https://github.com/originaonxi/echo">View repo →</a><br><span class="gh-badge live">COMMS</span></div>
-          <div class="gh-card"><div class="gh-name">glassbox-agents</div><div class="gh-desc">Transparent agent execution. Every decision both cores make is inspectable.</div><a class="gh-link" href="https://github.com/originaonxi/glassbox-agents">View repo →</a><br><span class="gh-badge live">OBSERVABILITY</span></div>
-          <div class="gh-card"><div class="gh-name">alignment-auditor</div><div class="gh-desc">Alignment verification. Ensures both cores stay within safety and ethical bounds.</div><a class="gh-link" href="https://github.com/originaonxi/alignment-auditor">View repo →</a><br><span class="gh-badge live">SAFETY</span></div>
-          <div class="gh-card"><div class="gh-name">realtime-reasoning-engine</div><div class="gh-desc">Real-time reasoning for live decisions. Powers both cores' scoring and classification.</div><a class="gh-link" href="https://github.com/originaonxi/realtime-reasoning-engine">View repo →</a><br><span class="gh-badge live">REASONING</span></div>
-          <div class="gh-card"><div class="gh-name">llm-evals-arena</div><div class="gh-desc">LLM evaluation framework. How we choose which model powers which agent capability.</div><a class="gh-link" href="https://github.com/originaonxi/llm-evals-arena">View repo →</a><br><span class="gh-badge live">EVALS</span></div>
-          <div class="gh-card"><div class="gh-name">llm-calibration-study</div><div class="gh-desc">Confidence calibration on B2B sales email quality. Ensures both cores know when they're wrong.</div><a class="gh-link" href="https://github.com/originaonxi/llm-calibration-study">View repo →</a><br><span class="gh-badge research">RESEARCH</span></div>
-          <div class="gh-card"><div class="gh-name">blueprint-trust-engine</div><div class="gh-desc">Trust scoring for agent decisions. Determines how much autonomy each core gets.</div><a class="gh-link" href="https://github.com/originaonxi/blueprint-trust-engine">View repo →</a><br><span class="gh-badge research">TRUST</span></div>
-        </div>
-      </div>
-
-      <!-- RESEARCH THAT POWERS EVERYTHING -->
-      <div style="border:2px solid #f59e0b;border-radius:16px;padding:32px;margin-bottom:24px;background:#fffefa">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
-          <div style="background:#f59e0b;color:#fff;padding:8px 20px;border-radius:8px;font-weight:900;font-size:1rem">RESEARCH</div>
-          <div style="font-size:0.88rem;color:#666">Papers replicated and deployed into production — the science behind the agents</div>
-        </div>
-        <div class="gh-grid">
-          <div class="gh-card"><div class="gh-name">asm-replication</div><div class="gh-desc">Active Structured Memory. How agents remember what worked across months of campaigns. NeurIPS 2026.</div><a class="gh-link" href="https://github.com/originaonxi/asm-replication">View research →</a><br><span class="gh-badge research">NEURIPS 2026</span></div>
-          <div class="gh-card"><div class="gh-name">prm-replication</div><div class="gh-desc">Process Reward Models. Rewards intermediate reasoning steps, not just final outcomes.</div><a class="gh-link" href="https://github.com/originaonxi/prm-replication">View research →</a><br><span class="gh-badge research">PUBLISHED</span></div>
-          <div class="gh-card"><div class="gh-name">rewardflow-replication</div><div class="gh-desc">Multi-step reward propagation. Credits decisions that caused outcomes 47 steps later.</div><a class="gh-link" href="https://github.com/originaonxi/rewardflow-replication">View research →</a><br><span class="gh-badge research">PUBLISHED</span></div>
-          <div class="gh-card"><div class="gh-name">tdad-replication</div><div class="gh-desc">Trajectory-Driven Agent Design. Learning from full action sequences, not single steps.</div><a class="gh-link" href="https://github.com/originaonxi/tdad-replication">View research →</a><br><span class="gh-badge research">PUBLISHED</span></div>
-          <div class="gh-card"><div class="gh-name">moe-efficiency-study</div><div class="gh-desc">MoE routing strategy. Original metric. Directly applicable to multi-agent persona routing.</div><a class="gh-link" href="https://github.com/originaonxi/moe-efficiency-study">View paper →</a><br><span class="gh-badge research">PUBLISHED</span></div>
-          <div class="gh-card"><div class="gh-name">information-architecture-thesis</div><div class="gh-desc">Long-horizon state management. What to keep, compress, or discard over months of operation.</div><a class="gh-link" href="https://github.com/originaonxi/information-architecture-thesis">View thesis →</a><br><span class="gh-badge research">PUBLISHED</span></div>
-          <div class="gh-card"><div class="gh-name">reward-model-blindness</div><div class="gh-desc">RLHF reward models predict human ratings — but humans rate for the wrong reasons. Measures how wrong.</div><a class="gh-link" href="https://github.com/originaonxi/reward-model-blindness">View research →</a><br><span class="gh-badge research">RESEARCH</span></div>
-          <div class="gh-card"><div class="gh-name">reversion-study</div><div class="gh-desc">Agent reversion patterns. Why agents regress after improvement — and how to prevent it.</div><a class="gh-link" href="https://github.com/originaonxi/reversion-study">View research →</a><br><span class="gh-badge research">RESEARCH</span></div>
-          <div class="gh-card"><div class="gh-name">attention-from-scratch</div><div class="gh-desc">Attention mechanism built from first principles. Foundation understanding that powers everything.</div><a class="gh-link" href="https://github.com/originaonxi/attention-from-scratch">View repo →</a><br><span class="gh-badge research">FOUNDATIONS</span></div>
-        </div>
-      </div>
-
-      <!-- META -->
-      <div style="border:2px solid #888;border-radius:16px;padding:32px;background:#fafafa">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
-          <div style="background:#555;color:#fff;padding:8px 20px;border-radius:8px;font-weight:900;font-size:1rem">META</div>
-          <div style="font-size:0.88rem;color:#666">The mission layer — vision, daily log, AGI architecture</div>
-        </div>
-        <div class="gh-grid">
-          <div class="gh-card"><div class="gh-name">agi-possible-agent</div><div class="gh-desc">Daily AGI architecture experiments. Testing what's possible at the frontier.</div><a class="gh-link" href="https://github.com/originaonxi/agi-possible-agent">View repo →</a><br><span class="gh-badge research">ACTIVE</span></div>
-          <div class="gh-card"><div class="gh-name">frontier-agi-journey</div><div class="gh-desc">Daily research log. Every paper read, every experiment run, every insight documented.</div><a class="gh-link" href="https://github.com/originaonxi/frontier-agi-journey">View log →</a><br><span class="gh-badge research">DAILY</span></div>
-          <div class="gh-card"><div class="gh-name">space-wonder-agent</div><div class="gh-desc">Exploration agent. Testing agent architectures in unbounded domains.</div><a class="gh-link" href="https://github.com/originaonxi/space-wonder-agent">View repo →</a><br><span class="gh-badge research">EXPERIMENTAL</span></div>
-        </div>
-      </div>
-
-      <!-- CONVERGENCE ARROW -->
-      <div style="text-align:center;margin:32px 0;color:#ccc;font-size:0.82rem">
-        <div style="font-size:2rem;margin-bottom:8px">↓ ↓ ↓</div>
-        <div style="font-weight:700;color:#888">All 38 repositories converge into</div>
-      </div>
-
-      <div style="display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:16px">
-        <div style="border:3px solid #16a34a;border-radius:14px;padding:20px 40px;text-align:center"><div style="font-size:1.3rem;font-weight:900;color:#16a34a">AROS</div><div style="font-size:0.75rem;color:#888">finds revenue</div></div>
-        <div style="display:flex;align-items:center;color:#ddd;font-size:1.5rem">+</div>
-        <div style="border:3px solid #2563eb;border-radius:14px;padding:20px 40px;text-align:center"><div style="font-size:1.3rem;font-weight:900;color:#2563eb">ARIA</div><div style="font-size:0.75rem;color:#888">finds capital</div></div>
-      </div>
-      <div style="text-align:center;color:#ccc;font-size:1.5rem;margin-bottom:12px">↓</div>
-      <div style="text-align:center"><div style="display:inline-block;border:3px solid #f59e0b;border-radius:14px;padding:20px 48px"><div style="font-size:1.1rem;font-weight:900;color:#f59e0b">AIRTABLE</div><div style="font-size:0.72rem;color:#999">single source of truth — compounds forever</div></div></div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════ LLM ═══════ -->
-<div class="section">
-  <div class="container">
-    <div class="sh">
-      <div class="sh-label">Coming next</div>
-      <h2>LLM Content Layer</h2>
-      <p>When someone asks any AI about your market, your business should be in the answer. Not SEO for 2015. Presence at the inference layer.</p>
-    </div>
-    <div class="llm-chips">
-      <div class="llm-chip">Claude</div>
-      <div class="llm-chip">GPT</div>
-      <div class="llm-chip">Gemini</div>
-      <div class="llm-chip">Perplexity</div>
-      <div class="llm-chip">Grok</div>
-    </div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- ═══════ PRICING ═══════ -->
-<div class="section section-alt">
-  <div class="container">
-    <div class="sh" style="text-align:center">
-      <div class="sh-label">Transparent pricing</div>
-      <h2>3 months to discover your Revenue-Making Campaigns.<br>9 months to scale. You pay only from closed revenue.</h2>
-      <p style="margin:12px auto 0;max-width:560px">We find the qualified meetings. We bring signal-driven prospects to your door. AROS discovers campaigns that convert. Then we fund the scaling ourselves.</p>
-    </div>
-
-    <!-- How it works -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:40px 0 48px;max-width:700px;margin-left:auto;margin-right:auto">
-      <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:12px;padding:24px;text-align:center">
-        <div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:1.5px;color:#2563eb;font-weight:700;margin-bottom:6px">Month 1-3</div>
-        <div style="font-size:1.1rem;font-weight:900;color:#000;margin-bottom:4px">RMC Discovery Phase</div>
-        <div style="font-size:0.82rem;color:#666;line-height:1.5">Record and analyze 100% of sales calls. Generate 10-20 campaign concepts. Validate with 90-day performance data. You pay a flat monthly fee.</div>
-      </div>
-      <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:24px;text-align:center">
-        <div style="font-size:0.65rem;text-transform:uppercase;letter-spacing:1.5px;color:#16a34a;font-weight:700;margin-bottom:6px">Month 4-12</div>
-        <div style="font-size:1.1rem;font-weight:900;color:#000;margin-bottom:4px">Intelligent Scaling</div>
-        <div style="font-size:0.82rem;color:#666;line-height:1.5">Pay only from closed deals. We fund 100% of ad spend across all channels. Scale validated RMCs. Expand to new markets. Revenue share only.</div>
-      </div>
-    </div>
-
-    <!-- Three tiers -->
-    <div class="pricing-grid">
-
-      <!-- Starter -->
-      <div class="tier">
-        <div class="tier-name">Starter</div>
-        <div class="tier-desc">1 Revenue-Making Campaign</div>
-
-        <div class="tier-phase phase-discovery">
-          <div class="tier-phase-label">Month 1-3: Discovery</div>
-          <div class="tier-price">$3K<span style="font-size:0.9rem;font-weight:400;color:#888">/mo</span></div>
-        </div>
-        <div class="tier-phase phase-scale">
-          <div class="tier-phase-label">Month 4-12: Scale</div>
-          <div class="tier-price">8-12%<span style="font-size:0.9rem;font-weight:400;color:#888"> revenue share</span></div>
-          <div class="tier-price-sub">on closed deals only</div>
-        </div>
-
-        <div class="tier-stats">
-          <div class="tier-stat"><div class="tier-stat-val">1</div><div class="tier-stat-lbl">Guaranteed RMC</div></div>
-          <div class="tier-stat"><div class="tier-stat-val">$30K+</div><div class="tier-stat-lbl">Capital Deployed</div></div>
-        </div>
-
-        <ul class="tier-features">
-          <li>1 validated RMC guaranteed</li>
-          <li>Google Ads + Meta Ads testing</li>
-          <li>AI sales intelligence from 100% of calls</li>
-          <li>PKM defense profiling on every prospect</li>
-          <li>Live campaign ledger tracking</li>
-          <li>$30K capital deployed after validation</li>
-          <li>Multi-channel expansion in scaling phase</li>
-        </ul>
-
-        <a href="https://calendar.app.google/gZ6V9ry93SQizZye8" class="tier-cta secondary">Get started</a>
-      </div>
-
-      <!-- Growth -->
-      <div class="tier popular">
-        <div class="tier-badge">MOST POPULAR</div>
-        <div class="tier-name">Growth</div>
-        <div class="tier-desc">2 Revenue Channels</div>
-
-        <div class="tier-phase phase-discovery">
-          <div class="tier-phase-label">Month 1-3: Discovery</div>
-          <div class="tier-price">$5K<span style="font-size:0.9rem;font-weight:400;color:#888">/mo</span></div>
-        </div>
-        <div class="tier-phase phase-scale">
-          <div class="tier-phase-label">Month 4-12: Scale</div>
-          <div class="tier-price">8-15%<span style="font-size:0.9rem;font-weight:400;color:#888"> revenue share</span></div>
-          <div class="tier-price-sub">on closed deals only</div>
-        </div>
-
-        <div class="tier-stats">
-          <div class="tier-stat"><div class="tier-stat-val">2</div><div class="tier-stat-lbl">Guaranteed RMCs</div></div>
-          <div class="tier-stat"><div class="tier-stat-val">$50K+</div><div class="tier-stat-lbl">Capital Deployed</div></div>
-        </div>
-
-        <ul class="tier-features">
-          <li>2 validated RMCs guaranteed</li>
-          <li>Google Ads + Meta Ads + YouTube testing</li>
-          <li>AI sales intelligence from 100% of calls</li>
-          <li>PKM defense profiling on every prospect</li>
-          <li>Live campaign ledger tracking per RMC</li>
-          <li>$50K capital deployed after validation</li>
-          <li>Multi-channel expansion across all platforms</li>
-          <li>Faster iteration cycles (2-3 days)</li>
-        </ul>
-
-        <a href="https://calendar.app.google/gZ6V9ry93SQizZye8" class="tier-cta primary">Get started</a>
-      </div>
-
-      <!-- Scale -->
-      <div class="tier">
-        <div class="tier-name">Scale</div>
-        <div class="tier-desc">5 RMCs for Domination</div>
-
-        <div class="tier-phase phase-discovery">
-          <div class="tier-phase-label">Month 1-3: Discovery</div>
-          <div class="tier-price">$10K<span style="font-size:0.9rem;font-weight:400;color:#888">/mo</span></div>
-        </div>
-        <div class="tier-phase phase-scale">
-          <div class="tier-phase-label">Month 4-12: Scale</div>
-          <div class="tier-price">8-25%<span style="font-size:0.9rem;font-weight:400;color:#888"> revenue share</span></div>
-          <div class="tier-price-sub">on closed deals only</div>
-        </div>
-
-        <div class="tier-stats">
-          <div class="tier-stat"><div class="tier-stat-val">5</div><div class="tier-stat-lbl">Guaranteed RMCs</div></div>
-          <div class="tier-stat"><div class="tier-stat-val">$100K+</div><div class="tier-stat-lbl">Capital Deployed</div></div>
-        </div>
-
-        <ul class="tier-features">
-          <li>5 validated RMCs guaranteed</li>
-          <li>All channels: Google, Meta, YouTube, Display, LinkedIn</li>
-          <li>AI sales intelligence from 100% of calls</li>
-          <li>PKM defense profiling on every prospect</li>
-          <li>Live campaign ledger tracking per RMC</li>
-          <li>$100K capital deployed after validation</li>
-          <li>Aggressive multi-channel expansion</li>
-          <li>Fastest iteration cycles (1-2 days)</li>
-          <li>Multi-location support</li>
-          <li>Dedicated success manager</li>
-        </ul>
-
-        <a href="https://calendar.app.google/gZ6V9ry93SQizZye8" class="tier-cta secondary">Get started</a>
-      </div>
-    </div>
-
-    <div class="pricing-note">
-      <strong>How it works:</strong> AROS discovers signal-driven prospects and qualified meetings. PKM profiles every prospect's defense mode before any outreach. You only meet people who are already showing buying signals — hiring, expanding, struggling with a problem you solve. After validation, we fund the ad spend ourselves. You pay revenue share on closed deals only. If we don't close, you don't pay.
-    </div>
-
-    <div style="text-align:center;margin-top:32px">
-      <div class="offer-guarantee" style="max-width:560px;margin:0 auto">
-        <h4>The guarantee</h4>
-        <p>Validated Revenue-Making Campaigns within 90 days — or we keep working for free. We can guarantee this because AROS has already collected $199K at $0.50/day. The patterns are proven. Every new customer adds more patterns.</p>
+    <div class="t">
+      <div class="t-bar"><div class="t-dot" style="background:#ff5f57"></div><div class="t-dot" style="background:#ffbd2e"></div><div class="t-dot" style="background:#28c840"></div><div class="t-title">13 causal links between agents</div></div>
+      <div class="t-body" style="font-size:11px">
+<span class="th">CROSS-AGENT CAUSAL MAP</span><br>
+<span class="to">============================================</span><br><br>
+<span class="to">outreach.leads_found ---------> <span class="tb">sales.pipeline_value</span></span><br>
+<span class="to">outreach.meetings_booked -----> <span class="tb">sales.close_rate</span></span><br>
+<span class="to">outreach.reply_rate ----------> <span class="tb">sales.avg_deal_size</span></span><br>
+<span class="to">qa.bugs_found ----------------> <span class="tb">support.resolution_rate</span></span><br>
+<span class="to">qa.tests_passed --------------> <span class="tb">helpdesk.auto_resolve_rate</span></span><br>
+<span class="to">brain.search_relevance -------> <span class="tb">outreach.reply_rate</span></span><br>
+<span class="to">brain.insights_shared --------> <span class="tb">outreach.meetings_booked</span></span><br>
+<span class="to">brain.patterns_detected ------> <span class="tb">qa.regression_catch_rate</span></span><br>
+<span class="to">hr.time_per_hire -------------> <span class="tb">helpdesk.tickets_resolved</span></span><br>
+<span class="to">daily_fleet.open_rate --------> <span class="tb">outreach.reply_rate</span></span><br>
+<span class="to">finance.forecast_accuracy ----> <span class="tb">sales.pipeline_value</span></span><br>
+<span class="to">support.csat_score -----------> <span class="tb">sales.close_rate</span></span><br>
+<span class="to">support.churn_prevented ------> <span class="tb">finance.forecast_accuracy</span></span><br><br>
+<span class="th">When source improves, target improves.</span><br>
+<span class="th">Measured. Timestamped. Attributed.</span>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ═══════ FINAL CTA ═══════ -->
-<div class="cta-final">
-  <h2>We find the meetings. We bring the prospects.<br>You close the deals. We scale the winners.</h2>
-  <a href="https://calendar.app.google/gZ6V9ry93SQizZye8" class="btn-cta">Book a call — see AROS find prospects for your business</a>
-  <div class="cta-sub">origin@aonxi.com&ensp;·&ensp;<a href="https://aonxi.app">aonxi.app</a>&ensp;·&ensp;<a href="https://github.com/originaonxi">github.com/originaonxi</a></div>
-</div>
+<!-- ═══════ WHAT IT REPLACES ═══════ -->
+<section id="replace" class="reveal">
+  <div class="tag">SaaS replacement</div>
+  <h2>It learns your tools.<br>Builds <em>local versions.</em><br>You cancel the <i>subscriptions.</i></h2>
+  <p class="sub">Connects via API. Watches which features you actually use. Builds local versions tuned to YOUR workflows. Why are they <b>better</b>? Because your CRM can finally see what your helpdesk knows.</p>
 
-<!-- ═══════ FOOTER ═══════ -->
-<div class="footer">
-  <p>Built by <a href="https://github.com/originaonxi">Anmol Sam</a>&ensp;·&ensp;Aonxi&ensp;·&ensp;<a href="mailto:origin@aonxi.com">origin@aonxi.com</a></p>
-  <p>$0 raised&ensp;·&ensp;$199K collected&ensp;·&ensp;Building in public&ensp;·&ensp;Every number real&ensp;·&ensp;Every commit dated</p>
-</div>
+  <div class="grid ga">
+    <div class="c"><div style="font-size:11px;color:var(--red);font-weight:600;text-decoration:line-through;opacity:.7;font-family:'JetBrains Mono',monospace">CRM &mdash; $800/mo</div><div style="font-size:17px;font-weight:800;margin:2px 0">Sales + Outreach AI</div><div style="font-size:12px;font-weight:600;color:var(--gold);margin-bottom:12px">$800/mo saved</div><div style="font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:8px">Pipeline, lead scoring, email sequences, deal intelligence. Every deal updates every other agent.</div><div style="font-size:11px;color:var(--blue);font-weight:500">Learns: your ICP, win patterns, deal stages</div></div>
+    <div class="c"><div style="font-size:11px;color:var(--red);font-weight:600;text-decoration:line-through;opacity:.7;font-family:'JetBrains Mono',monospace">Helpdesk &mdash; $55/seat/mo</div><div style="font-size:17px;font-weight:800;margin:2px 0">Support + IT Agent</div><div style="font-size:12px;font-weight:600;color:var(--gold);margin-bottom:12px">$550/mo saved (10 seats)</div><div style="font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:8px">Ticket handling, auto-resolution, CSAT tracking. Resolves 73% of Tier 1 before a human sees it.</div><div style="font-size:11px;color:var(--blue);font-weight:500">Learns: your product, common issues, tone</div></div>
+    <div class="c"><div style="font-size:11px;color:var(--red);font-weight:600;text-decoration:line-through;opacity:.7;font-family:'JetBrains Mono',monospace">Accounting &mdash; $80/mo</div><div style="font-size:17px;font-weight:800;margin:2px 0">Finance Agent</div><div style="font-size:12px;font-weight:600;color:var(--gold);margin-bottom:12px">$80/mo saved</div><div style="font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:8px">Invoices, MRR/ARR, forecasting, anomalies. Knows your pipeline because it shares the brain.</div><div style="font-size:11px;color:var(--blue);font-weight:500">Learns: your chart of accounts, trends</div></div>
+    <div class="c"><div style="font-size:11px;color:var(--red);font-weight:600;text-decoration:line-through;opacity:.7;font-family:'JetBrains Mono',monospace">Ad Management &mdash; $2,000/mo</div><div style="font-size:17px;font-weight:800;margin:2px 0">Omni-Outreach Agent</div><div style="font-size:12px;font-weight:600;color:var(--gold);margin-bottom:12px">$2,000/mo saved</div><div style="font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:8px">Ad copy, bid management, landing pages, A/B tests. Uses ad platform APIs. Mac Mini is the brain.</div><div style="font-size:11px;color:var(--blue);font-weight:500">Learns: CPA targets, winning creatives</div></div>
+    <div class="c"><div style="font-size:11px;color:var(--red);font-weight:600;text-decoration:line-through;opacity:.7;font-family:'JetBrains Mono',monospace">SEO Platform &mdash; $120/mo</div><div style="font-size:17px;font-weight:800;margin:2px 0">SEO + Content Agent</div><div style="font-size:12px;font-weight:600;color:var(--gold);margin-bottom:12px">$120/mo saved</div><div style="font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:8px">Keyword research, competitor analysis, rank tracking. Runs audits at 3am. Reports by breakfast.</div><div style="font-size:11px;color:var(--blue);font-weight:500">Learns: winning content, competitor gaps</div></div>
+    <div class="c"><div style="font-size:11px;color:var(--red);font-weight:600;text-decoration:line-through;opacity:.7;font-family:'JetBrains Mono',monospace">AI Assistants &mdash; $30/seat/mo</div><div style="font-size:17px;font-weight:800;margin:2px 0">Per-Employee AI</div><div style="font-size:12px;font-weight:600;color:var(--gold);margin-bottom:12px">$300/mo saved (10 seats)</div><div style="font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:8px">Every employee gets role-tuned AI. CEO: strategy. Sales: pipeline. HR: compliance. Not a generic chatbot.</div><div style="font-size:11px;color:var(--blue);font-weight:500">Learns: each person's role, style, projects</div></div>
+  </div>
 
+  <div style="margin-top:28px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;background:var(--s2);border:1.5px solid var(--gb);border-radius:10px;text-align:center;padding:32px">
+    <div><div style="font-size:36px;font-weight:900;color:var(--red);line-height:1;margin-bottom:4px">$4,050</div><div style="font-size:11px;color:var(--dim);font-weight:600;text-transform:uppercase;letter-spacing:.04em">Your monthly SaaS</div></div>
+    <div><div style="font-size:36px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:4px">$12</div><div style="font-size:11px;color:var(--dim);font-weight:600;text-transform:uppercase;letter-spacing:.04em">AONXI monthly (electricity)</div></div>
+    <div><div style="font-size:36px;font-weight:900;color:var(--green);line-height:1;margin-bottom:4px">$48,456</div><div style="font-size:11px;color:var(--dim);font-weight:600;text-transform:uppercase;letter-spacing:.04em">Annual savings</div></div>
+  </div>
+</section>
+
+<!-- ═══════ EVALS + RPDC ═══════ -->
+<section id="evals" class="reveal">
+  <div class="tag">Evaluation engine</div>
+  <h2>The <em>ONE</em> metric:<br>Revenue per dollar <i>spent.</i></h2>
+  <p class="sub"><b>RPDC = Revenue / (Inference Cost + Human QC Cost).</b> Every change is an experiment. Every experiment has before/after. You know exactly which change drove which improvement. No guessing. Numbers.</p>
+
+  <div class="grid g4" style="margin-bottom:32px">
+    <div class="c" style="text-align:center"><div style="font-size:44px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:6px">559x</div><div style="font-size:14px;font-weight:700;margin-bottom:4px">RPDC</div><div style="font-size:12px;color:var(--muted)">$14K revenue / $25 cost. Every $1 generates $559.</div></div>
+    <div class="c" style="text-align:center"><div style="font-size:44px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:6px">45</div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Metrics Tracked</div><div style="font-size:12px;color:var(--muted)">Across 9 agent types. All revenue-weighted.</div></div>
+    <div class="c" style="text-align:center"><div style="font-size:44px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:6px">13</div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Causal Links</div><div style="font-size:12px;color:var(--muted)">Cross-agent cause-effect. Measured automatically.</div></div>
+    <div class="c" style="text-align:center"><div style="font-size:44px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:6px">CIS</div><div style="font-size:14px;font-weight:700;margin-bottom:4px">Compound Score</div><div style="font-size:12px;color:var(--muted)">One number for the whole system. Updated daily.</div></div>
+  </div>
+
+  <!-- Inference cost comparison -->
+  <h3 style="font-size:16px;font-weight:800;margin-bottom:16px">Cloud API cost vs your Mac Mini</h3>
+  <div class="tw" style="margin-bottom:32px">
+    <table class="tbl">
+      <thead><tr><th>Provider</th><th>Model</th><th>Input/1M tokens</th><th>Output/1M tokens</th><th>1K queries/day</th></tr></thead>
+      <tbody>
+        <tr><td>Cloud API</td><td class="r">Claude Opus</td><td class="r">$15.00</td><td class="r">$75.00</td><td class="r">~$2,700/mo</td></tr>
+        <tr><td>Cloud API</td><td class="r">Claude Sonnet</td><td class="r">$3.00</td><td class="r">$15.00</td><td class="r">~$540/mo</td></tr>
+        <tr><td>Cloud API</td><td class="r">GPT-4o</td><td class="r">$2.50</td><td class="r">$10.00</td><td class="r">~$375/mo</td></tr>
+        <tr><td style="font-weight:700;color:var(--gold)">Your Mac Mini</td><td class="g">Qwen 72B (local)</td><td class="g">$0.00</td><td class="g">$0.00</td><td class="g">~$4.60/mo electricity</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box" style="text-align:center;font-size:14px;color:var(--gold);font-weight:600">Industry eval tools benchmark models in labs. We benchmark outcomes in production. They measure "which model is better." We measure "which change made the business more money." That's the difference.</div>
+</section>
+
+<!-- ═══════ DATA SOVEREIGNTY ═══════ -->
+<section class="reveal" style="background:var(--s1)">
+  <div class="tag">Data sovereignty</div>
+  <h2>Your data <em>never</em> leaves.<br>Access from <i>everywhere.</i></h2>
+  <p class="sub">Cloudflare Tunnel (free tier) gives you HTTPS global access. Data stays on your hardware. <b>Login from any device, any country. Data stays in your building.</b></p>
+  <div class="grid g3">
+    <div class="c" style="text-align:center"><div style="font-size:28px;font-weight:800;color:var(--gold);margin-bottom:8px;font-family:'JetBrains Mono',monospace">GDPR</div><div style="font-size:15px;font-weight:700;margin-bottom:6px">Full Compliance</div><div style="font-size:13px;color:var(--muted);line-height:1.65">Data in your jurisdiction. No third-party processing. GDPR fines (4% of revenue) aren't your problem.</div></div>
+    <div class="c" style="text-align:center"><div style="font-size:28px;font-weight:800;color:var(--gold);margin-bottom:8px;font-family:'JetBrains Mono',monospace">HIPAA</div><div style="font-size:15px;font-weight:700;margin-bottom:6px">Patient Data Safe</div><div style="font-size:13px;color:var(--muted);line-height:1.65">PHI never leaves. No BAA negotiation. Your hardware, your control.</div></div>
+    <div class="c" style="text-align:center"><div style="font-size:28px;font-weight:800;color:var(--gold);margin-bottom:8px;font-family:'JetBrains Mono',monospace">SOC 2</div><div style="font-size:15px;font-weight:700;margin-bottom:6px">Audit-Ready</div><div style="font-size:13px;color:var(--muted);line-height:1.65">AES-256 at rest. Zero third-party exposure. One-page security audit.</div></div>
+  </div>
+</section>
+
+<!-- ═══════ THE AI CHIP FOR YOUR BUSINESS ═══════ -->
+<section class="reveal divider">
+  <div class="tag">The vision</div>
+  <h2>Today it's a Mac Mini.<br>Tomorrow it's the <em>AI chip</em><br>that <i>runs</i> your business.</h2>
+  <p class="sub">Your business is unique. Your processes are unique. Your data is unique. <b>So why is your AI generic?</b> The Mac Mini on your desk is the beginning &mdash; a dedicated intelligence processor that learns YOUR business and gets more powerful every year.</p>
+
+  <div class="grid g3" style="margin-bottom:32px">
+    <div class="c" style="text-align:center">
+      <div style="font-size:32px;font-weight:900;color:var(--gold);margin-bottom:10px">2026</div>
+      <div style="font-size:15px;font-weight:700;margin-bottom:8px">Mac Mini M4</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.7">Apple Silicon. 16-64GB unified memory. Runs Qwen 72B, Llama 70B locally. 50+ agents. $2-$12/mo electricity. The foundation.</div>
+    </div>
+    <div class="c" style="text-align:center">
+      <div style="font-size:32px;font-weight:900;color:var(--gold);margin-bottom:10px">2027</div>
+      <div style="font-size:15px;font-weight:700;margin-bottom:8px">+ NVIDIA GPU Module</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.7">Add an external GPU enclosure. Run 405B parameter models. Inference speed 10x. Same Mac Mini. Same agents. Same data. Just faster and smarter.</div>
+    </div>
+    <div class="c" style="text-align:center">
+      <div style="font-size:32px;font-weight:900;color:var(--gold);margin-bottom:10px">2028+</div>
+      <div style="font-size:15px;font-weight:700;margin-bottom:8px">Custom Fine-Tuned Models</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.7">Models trained on YOUR data. Not OpenAI's data. Not the internet. YOUR emails, YOUR deals, YOUR support tickets. Intelligence that no competitor can buy.</div>
+    </div>
+  </div>
+
+  <div class="t">
+    <div class="t-bar"><div class="t-dot" style="background:#ff5f57"></div><div class="t-dot" style="background:#ffbd2e"></div><div class="t-dot" style="background:#28c840"></div><div class="t-title">the evolution of your business AI chip</div></div>
+    <div class="t-body">
+<span class="th">WHY YOUR AI SHOULD BE AS UNIQUE AS YOUR BUSINESS</span><br><br>
+<span class="to">  Every business has its own language, its own processes,</span><br>
+<span class="to">  its own patterns. Generic AI (ChatGPT, Copilot) treats</span><br>
+<span class="to">  every business the same way. That's like giving every</span><br>
+<span class="to">  company the same employee handbook.</span><br><br>
+<span class="th">  Your Mac Mini learns:</span><br>
+<span class="to">    How YOUR sales team closes deals (not a generic playbook)</span><br>
+<span class="to">    How YOUR customers ask for help (not average customers)</span><br>
+<span class="to">    How YOUR invoices categorize (not a standard chart)</span><br>
+<span class="to">    How YOUR team writes (not corporate boilerplate)</span><br><br>
+<span class="th">  The hardware path:</span><br>
+<span class="to">    Today:    Mac Mini M4 &mdash; <span class="th">$499</span> &mdash; runs 14B-72B models</span><br>
+<span class="to">    Add GPU:  NVIDIA eGPU &mdash; <span class="th">$1,500-$3,000</span> &mdash; runs 405B models</span><br>
+<span class="to">    Add RAM:  Mac Studio Ultra &mdash; <span class="th">192GB</span> &mdash; multi-model inference</span><br>
+<span class="to">    Add node: Second Mac Mini &mdash; <span class="th">cluster</span> &mdash; department-siloed AI</span><br><br>
+<span class="th">  The intelligence path:</span><br>
+<span class="to">    Month 1:   Agents running, learning your patterns</span><br>
+<span class="to">    Month 6:   Models tuned to your terminology and workflows</span><br>
+<span class="to">    Month 12:  Custom fine-tuned model on YOUR data exclusively</span><br>
+<span class="to">    Month 24:  AI that knows your business better than any employee</span><br><br>
+<span class="tw">  The longer it runs, the smarter it gets. The smarter it gets,</span><br>
+<span class="tw">  the more it replaces. The more it replaces, the lower your costs.</span><br>
+<span class="tw">  This is a compounding asset. Not a subscription.</span>
+    </div>
+  </div>
+
+  <div class="box" style="margin-top:28px;text-align:center;font-size:15px;font-weight:600;color:var(--gold);line-height:1.8">
+    Cloud AI gives every business the same brain. AONXI gives YOUR business its own brain &mdash; trained on your data, running on your hardware, improving every day you own it. <span style="color:var(--text)">Your business is unique. Your AI should be too.</span>
+  </div>
+</section>
+
+<!-- ═══════ HOW YOUR CLONE ACTUALLY WORKS ═══════ -->
+<section class="reveal divider" style="background:var(--s1)">
+  <div class="tag">Under the hood &mdash; the clone technology</div>
+  <h2>The internet trained the <em>base.</em><br>Your life trains the <i>fine-tune.</i></h2>
+  <p class="sub">We reverse-engineered <b>1,902 files and 380,000+ lines</b> of frontier AI architecture. Then we asked: what if all of this ran locally on a $499 Mac Mini, trained on YOUR data? Here's what powers your clone.</p>
+
+  <div class="grid g3" style="margin-bottom:32px">
+    <div class="c">
+      <div style="font-size:32px;font-weight:900;color:var(--gold);margin-bottom:8px">Fork Agents</div>
+      <div style="font-size:14px;font-weight:700;margin-bottom:8px">Parallel execution, zero overhead</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.7">Your clone spots a lead → spawns 3 parallel workers: one researches the company, one checks your calendar, one drafts the email. All inherit parent context. All run simultaneously. All on your Mac Mini. <b style="color:var(--text)">0ms network overhead vs 50ms cloud roundtrip.</b> Local is faster.</div>
+    </div>
+    <div class="c">
+      <div style="font-size:32px;font-weight:900;color:var(--gold);margin-bottom:8px">3-Tier Memory</div>
+      <div style="font-size:14px;font-weight:700;margin-bottom:8px">Your clone never truly forgets</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.7"><b style="color:var(--text)">Personal</b> — your writing style, health goals, communication patterns. <b style="color:var(--text)">Business</b> — your ICP, win patterns, team dynamics. <b style="color:var(--text)">Runtime</b> — today's tasks, cached computations. All files on disk. ~1ms reads. Never deleted.</div>
+    </div>
+    <div class="c">
+      <div style="font-size:32px;font-weight:900;color:var(--gold);margin-bottom:8px">2,750</div>
+      <div style="font-size:14px;font-weight:700;margin-bottom:8px">Lines of Python. That's the whole system.</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.7">Agent executor (800), memory management (300), concurrent tools (500), hook system (400), context compaction (300), agent loader (200), permissions (150), Ollama (100). <b style="color:var(--text)">Open source. Every line readable. Every decision auditable.</b></div>
+    </div>
+  </div>
+
+  <!-- The 10 breakthroughs that matter most -->
+  <div class="t">
+    <div class="t-bar"><div class="t-dot" style="background:#ff5f57"></div><div class="t-dot" style="background:#ffbd2e"></div><div class="t-dot" style="background:#28c840"></div><div class="t-title">10 breakthroughs that make your clone 10x better than cloud AI</div></div>
+    <div class="t-body">
+<span class="th">1. FORK SUBAGENTS</span><br>
+<span class="to">   Your clone spawns parallel workers. Research 5 companies simultaneously.</span><br>
+<span class="to">   All workers inherit parent context. Zero network overhead. Local = faster.</span><br><br>
+
+<span class="th">2. CONTEXT COMPACTION</span><br>
+<span class="to">   Before trimming old messages, key facts written to MEMORY.md.</span><br>
+<span class="to">   Messages gone, knowledge stays. 32K window feels infinite.</span><br><br>
+
+<span class="th">3. PROGRESSIVE TRUST</span><br>
+<span class="to">   Day 1: clone asks everything. Day 90: handles 80% autonomously.</span><br>
+<span class="to">   Trust earned via RPDC outcomes. Never assumed. Never permanent.</span><br><br>
+
+<span class="th">4. TEACHABLE VIA JSON</span><br>
+<span class="to">   Drop a JSON file → clone learns new skill. No code changes ever.</span><br>
+<span class="to">   {"description": "quarterly report", "tools": ["Read","Write"], ...}</span><br><br>
+
+<span class="th">5. HOOK SYSTEM (15 INTERCEPT POINTS)</span><br>
+<span class="to">   Before email send → check compliance. After deal close → update all agents.</span><br>
+<span class="to">   Every action validated, logged, learned from. Trust is built here.</span><br><br>
+
+<span class="th">6. CONCURRENT SAFE EXECUTION</span><br>
+<span class="to">   Read CRM + check calendar + scan inbox = parallel (safe).</span><br>
+<span class="to">   Send email + update deal = sequential (exclusive). Like a smart human.</span><br><br>
+
+<span class="th">7. DENIAL LEARNING</span><br>
+<span class="to">   You say no to emailing a CEO. Clone stores WHY, not just NO.</span><br>
+<span class="to">   Never repeats the same mistake. Learns the reason, not the rule.</span><br><br>
+
+<span class="th">8. COMPOUND SESSIONS</span><br>
+<span class="to">   Monday's learning improves Tuesday. Tuesday's success improves Friday.</span><br>
+<span class="to">   Friday's pattern shared with all agents. Next Monday: everyone is smarter.</span><br><br>
+
+<span class="th">9. MULTI-PERSONA ISOLATION</span><br>
+<span class="to">   CEO sees everything. Sales sees pipeline only. HR sees candidates only.</span><br>
+<span class="to">   Same Mac Mini. Same brain. Role-based access. Like departments, for AI.</span><br><br>
+
+<span class="th">10. BACKGROUND EXECUTION</span><br>
+<span class="to">   "Research 50 healthcare companies." Clone starts. You go live your life.</span><br>
+<span class="to">   20 minutes later: notification. 12 qualified. Emails drafted. Ready.</span><br>
+<span class="to">   <span class="tw">Your clone works while you sleep. That's the whole point.</span></span>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border-radius:10px;overflow:hidden;margin-top:32px">
+    <div style="background:var(--s2);padding:28px 24px">
+      <div style="font-size:11px;font-weight:700;color:var(--red);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">What cloud AI gives you</div>
+      <div style="font-size:14px;color:var(--muted);line-height:1.8">A generic model trained on everyone's data. Same brain for every human. Forgets you between sessions. Your patterns train THEIR model. You rent intelligence you'll never own.</div>
+    </div>
+    <div style="background:var(--s2);padding:28px 24px;border-left:2px solid var(--gold)">
+      <div style="font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">What your Mac Mini clone gives you</div>
+      <div style="font-size:14px;color:var(--muted);line-height:1.8">A model fine-tuned on YOUR emails, YOUR deals, YOUR decisions, YOUR health data. <b style="color:var(--text)">Your patterns train YOUR model.</b> Intelligence that compounds daily. Yours forever. On your desk. $2/month.</div>
+    </div>
+  </div>
+
+  <div class="box" style="margin-top:28px;text-align:center;font-size:16px;font-weight:700;line-height:1.8">
+    <span style="color:var(--gold)">The internet trained the base. Your life trains the fine-tune.</span><br>
+    <span style="color:var(--text);font-weight:400">That's the difference between a tool and a clone. Every smart human deserves a Mac Mini.</span>
+  </div>
+</section>
+
+<!-- ═══════ PRICING — ONE SECTION, FULLY TRANSPARENT ═══════ -->
+<section id="pricing" class="reveal">
+  <div class="tag">Pricing &mdash; fully transparent</div>
+  <h2>Hardware at Apple retail.<br>Setup fee for our work.<br><em>That's it.</em></h2>
+  <p class="sub">No hidden costs. No recurring fees. No per-seat pricing. <b>Hardware ships from Apple. We make it smart. You own everything.</b></p>
+
+  <div class="grid g4">
+    <div class="c">
+      <div style="font-size:10px;font-weight:800;color:var(--gold);letter-spacing:.15em;margin-bottom:10px">SOLO</div>
+      <div style="font-size:42px;font-weight:900;line-height:1">$1,999</div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:16px">one-time total</div>
+      <div style="height:1px;background:var(--border);margin-bottom:14px"></div>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:12px;color:var(--muted);margin-bottom:16px">
+        <div><span style="color:var(--gold);font-weight:700">=</span> Mac Mini M4 16GB <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim)">($499 Apple retail)</span></div>
+        <div><span style="color:var(--gold);font-weight:700">=</span> AONXI setup + deploy <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim)">($1,500)</span></div>
+        <div><span style="color:var(--gold);font-weight:700">+</span> 1-2 agents (Qwen 7B-14B)</div>
+        <div><span style="color:var(--gold);font-weight:700">+</span> Super Brain + tunnel</div>
+        <div><span style="color:var(--gold);font-weight:700">+</span> ROI-positive in 90 days or we keep working free</div>
+      </div>
+      <div style="font-size:11px;color:var(--dim);font-family:'JetBrains Mono',monospace;margin-bottom:14px">Ongoing: ~$2/mo electricity</div>
+      <a href="#clone" style="display:block;text-align:center;padding:12px;border:1px solid var(--border2);border-radius:6px;font-size:13px;font-weight:700;color:var(--muted);transition:all .2s">Get started</a>
+    </div>
+    <div class="c">
+      <div style="font-size:10px;font-weight:800;color:var(--gold);letter-spacing:.15em;margin-bottom:10px">STARTUP</div>
+      <div style="font-size:42px;font-weight:900;line-height:1">$3,899</div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:16px">one-time total</div>
+      <div style="height:1px;background:var(--border);margin-bottom:14px"></div>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:12px;color:var(--muted);margin-bottom:16px">
+        <div><span style="color:var(--gold);font-weight:700">=</span> Mac Mini M4 Pro 24GB <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim)">($1,399)</span></div>
+        <div><span style="color:var(--gold);font-weight:700">=</span> AONXI setup + deploy <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim)">($2,500)</span></div>
+        <div><span style="color:var(--gold);font-weight:700">+</span> 3-5 agents (Qwen 32B)</div>
+        <div><span style="color:var(--gold);font-weight:700">+</span> Cross-agent memory</div>
+        <div><span style="color:var(--gold);font-weight:700">+</span> Tool learning engine</div>
+        <div><span style="color:var(--gold);font-weight:700">+</span> ROI-positive in 90 days or we keep working free</div>
+      </div>
+      <div style="font-size:11px;color:var(--dim);font-family:'JetBrains Mono',monospace;margin-bottom:14px">Ongoing: ~$4/mo electricity</div>
+      <a href="#clone" style="display:block;text-align:center;padding:12px;border:1px solid var(--border2);border-radius:6px;font-size:13px;font-weight:700;color:var(--muted);transition:all .2s">Get started</a>
+    </div>
+    <div class="c c-hl">
+      <div style="position:absolute;top:0;right:16px;background:var(--gold);color:var(--bg);font-size:9px;font-weight:800;padding:3px 12px;border-radius:0 0 6px 6px;letter-spacing:.08em">BEST VALUE</div>
+      <div style="font-size:10px;font-weight:800;color:var(--gold);letter-spacing:.15em;margin-bottom:10px">BUSINESS</div>
+      <div style="font-size:42px;font-weight:900;line-height:1">$7,499</div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:16px">one-time total</div>
+      <div style="height:1px;background:var(--border);margin-bottom:14px"></div>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:12px;color:var(--muted);margin-bottom:16px">
+        <div><span style="color:var(--gold);font-weight:700">=</span> Mac Studio M4 Max 64GB <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim)">($2,499)</span></div>
+        <div><span style="color:var(--gold);font-weight:700">=</span> AONXI setup + deploy <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim)">($5,000)</span></div>
+        <div><span style="color:var(--gold);font-weight:700">+</span> Full fleet (Qwen 72B / Llama 70B)</div>
+        <div><span style="color:var(--gold);font-weight:700">+</span> ALL SaaS tools replaced</div>
+        <div><span style="color:var(--gold);font-weight:700">+</span> Experiment attribution engine</div>
+        <div><span style="color:var(--gold);font-weight:700">+</span> Custom agent development</div>
+        <div><span style="color:var(--gold);font-weight:700">+</span> ROI-positive in 90 days or we keep working free</div>
+      </div>
+      <div style="font-size:11px;color:var(--dim);font-family:'JetBrains Mono',monospace;margin-bottom:14px">Ongoing: ~$12/mo electricity</div>
+      <a href="#clone" style="display:block;text-align:center;padding:12px;background:var(--gold);border-radius:6px;font-size:13px;font-weight:700;color:var(--bg);transition:all .2s">Get started</a>
+    </div>
+    <div class="c">
+      <div style="font-size:10px;font-weight:800;color:var(--gold);letter-spacing:.15em;margin-bottom:10px">ENTERPRISE</div>
+      <div style="font-size:42px;font-weight:900;line-height:1">$14,999<span style="font-size:18px;font-weight:500">+</span></div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:16px">one-time total</div>
+      <div style="height:1px;background:var(--border);margin-bottom:14px"></div>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:12px;color:var(--muted);margin-bottom:16px">
+        <div><span style="color:var(--gold);font-weight:700">=</span> Mac Studio M4 Ultra 192GB <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim)">($3,999+)</span></div>
+        <div><span style="color:var(--gold);font-weight:700">=</span> AONXI full deploy <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim)">($11,000+)</span></div>
+        <div><span style="color:var(--gold);font-weight:700">+</span> Unlimited agents, any model</div>
+        <div><span style="color:var(--gold);font-weight:700">+</span> Department-siloed AI</div>
+        <div><span style="color:var(--gold);font-weight:700">+</span> On-site deployment</div>
+        <div><span style="color:var(--gold);font-weight:700">+</span> Source code access</div>
+      </div>
+      <div style="font-size:11px;color:var(--dim);font-family:'JetBrains Mono',monospace;margin-bottom:14px">Ongoing: ~$18/mo electricity</div>
+      <a href="#clone" style="display:block;text-align:center;padding:12px;border:1px solid var(--border2);border-radius:6px;font-size:13px;font-weight:700;color:var(--muted);transition:all .2s">Contact us</a>
+    </div>
+  </div>
+
+  <div style="margin-top:24px;padding:18px 24px;background:var(--s2);border:1px solid var(--border2);border-radius:8px">
+    <div style="font-size:14px;font-weight:700;margin-bottom:6px">What's in the setup fee?</div>
+    <div style="font-size:13px;color:var(--muted);line-height:1.8">Remote deployment: Ollama + models + AONXI gateway + Cloudflare Tunnel + agent fleet + Super Brain + MemoryMesh + per-employee profiles + SaaS tool observation + all integrations. 2-4 hours. Hardware ships from Apple directly to you.</div>
+  </div>
+
+  <!-- OUTCOME GUARANTEE -->
+  <div style="max-width:720px;margin:48px auto 0;text-align:center;padding:48px 40px;background:var(--s1);border:1.5px solid var(--gb);border-radius:14px;position:relative;overflow:hidden">
+    <div style="position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:400px;height:200px;background:radial-gradient(ellipse,rgba(240,180,41,.05),transparent);pointer-events:none"></div>
+    <div style="font-size:48px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:14px">90 DAYS</div>
+    <div style="font-size:26px;font-weight:900;margin-bottom:16px">ROI-positive or we <em style="font-style:normal;color:var(--gold)">keep working free.</em></div>
+    <div style="font-size:15px;color:var(--muted);line-height:1.9;font-weight:300;max-width:580px;margin:0 auto 20px">
+      This is an outcome-based partnership, not a transaction. Your agents are deployed to deliver measurable results &mdash; meetings booked, tickets resolved, invoices processed, pipeline built. <b style="color:var(--text);font-weight:600">If your system isn't ROI-positive within 90 days, we continue optimizing, tuning, and improving your agents at zero additional cost until it is.</b>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);border-radius:8px;overflow:hidden;margin-top:24px">
+      <div style="background:var(--s2);padding:20px 16px;text-align:center"><div style="font-size:24px;font-weight:900;color:var(--gold);margin-bottom:4px">Day 1</div><div style="font-size:11px;color:var(--dim)">Agents deployed and running. You see output immediately.</div></div>
+      <div style="background:var(--s2);padding:20px 16px;text-align:center"><div style="font-size:24px;font-weight:900;color:var(--gold);margin-bottom:4px">Day 30</div><div style="font-size:11px;color:var(--dim)">First experiment cycle complete. Agents learning your patterns.</div></div>
+      <div style="background:var(--s2);padding:20px 16px;text-align:center"><div style="font-size:24px;font-weight:900;color:var(--gold);margin-bottom:4px">Day 90</div><div style="font-size:11px;color:var(--dim)">ROI-positive. Measurable. Attributed. Or we keep going free.</div></div>
+    </div>
+    <div style="margin-top:20px;font-size:12px;color:var(--dim);line-height:1.7">You keep the hardware regardless &mdash; it's yours. The Mac Mini has value beyond AONXI. Our commitment is that the agents we build on it will pay for themselves. We've never missed this target.</div>
+  </div>
+</section>
+
+<!-- ═══════ CTA ═══════ -->
+<!-- ═══════ THE 1 BILLION VISION ═══════ -->
+<section class="reveal divider" style="background:var(--s2)">
+  <div class="tag">The vision</div>
+  <h2>The first billion<br>from Apple is a <i>revolution.</i><br><span style="font-weight:300;color:var(--muted)">The next billion from NVIDIA is <em>evolution.</em></span></h2>
+  <p class="sub">We're not building a product. <b>We're cloning the smartest version of every human and making it run 24/7.</b> One Mac Mini per person. An AI clone that knows your work, your style, your patterns — and makes you 10x better at everything.</p>
+
+  <div class="grid g3" style="margin-bottom:32px">
+    <div class="c" style="text-align:center">
+      <div style="font-size:40px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:10px">1B</div>
+      <div style="font-size:15px;font-weight:700;margin-bottom:8px">Mac Minis on Apple Silicon</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.7">The first billion. One per person. Running on the fastest consumer silicon ever built. Your AI clone that knows your health, your wealth, your work, your goals. Always on. Always learning.</div>
+    </div>
+    <div class="c" style="text-align:center">
+      <div style="font-size:40px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:10px">10x</div>
+      <div style="font-size:15px;font-weight:700;margin-bottom:8px">Every Human, Amplified</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.7">Not replacing humans. <b style="color:var(--text)">Cloning the best version of you.</b> Your AI handles the repetitive work while you do what only humans can — create, connect, decide. Health and wealth, both improved.</div>
+    </div>
+    <div class="c" style="text-align:center">
+      <div style="font-size:40px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:10px">RPDC</div>
+      <div style="font-size:15px;font-weight:700;margin-bottom:8px">Revenue Per Dollar of Compute</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.7">The metric that drives everything. More compute, bigger models, better outcomes, more revenue per dollar spent. Burn more → get bigger → earn more. The flywheel that funds itself.</div>
+    </div>
+  </div>
+
+  <div class="t">
+    <div class="t-bar"><div class="t-dot" style="background:#ff5f57"></div><div class="t-dot" style="background:#ffbd2e"></div><div class="t-dot" style="background:#28c840"></div><div class="t-title">the path to 1 billion</div></div>
+    <div class="t-body">
+<span class="th">PHASE 1: APPLE REVOLUTION (2026-2028)</span><br>
+<span class="to">  1 billion Mac Minis. One per human. Apple Silicon.</span><br>
+<span class="to">  Fastest inference per watt. Local. Private. Yours.</span><br>
+<span class="to">  Each Mac Mini learns ONE person's patterns deeply.</span><br>
+<span class="to">  Your AI clone works while you sleep.</span><br>
+<span class="to">  Cost: <span class="th">$499 per human life transformed. Forever.</span></span><br><br>
+
+<span class="th">PHASE 2: NVIDIA EVOLUTION (2028+)</span><br>
+<span class="to">  Add GPU modules. Run 405B parameter models.</span><br>
+<span class="to">  Custom fine-tuned models on YOUR data.</span><br>
+<span class="to">  Intelligence that no one else can buy.</span><br>
+<span class="to">  The Mac Mini becomes a cluster. The cluster becomes a brain.</span><br>
+<span class="to">  Cost: <span class="th">$0.50/day compute. $800K/year revenue. 559x RPDC.</span></span><br><br>
+
+<span class="th">THE FLYWHEEL:</span><br>
+<span class="tw">  More compute → bigger models → better agents</span><br>
+<span class="tw">  Better agents → more revenue per dollar</span><br>
+<span class="tw">  More revenue → fund more compute</span><br>
+<span class="tw">  More compute → bigger models → better agents</span><br>
+<span class="tw">  Repeat. Forever. This is what compounding intelligence looks like.</span>
+    </div>
+  </div>
+
+  <div class="box" style="margin-top:28px;text-align:center;font-size:16px;font-weight:700;color:var(--gold);line-height:1.8">
+    Every human deserves an AI clone that makes them 10x better.<br>
+    <span style="color:var(--text);font-weight:400">Not a chatbot. A clone of YOUR best self — trained on your data, running on your hardware, improving every single day.</span>
+  </div>
+</section>
+
+<!-- ═══════ THE PATH TO AGI ═══════ -->
+<section id="agi" class="reveal divider" style="background:var(--s1)">
+  <div class="tag">The AGI path</div>
+  <h2>This Mac Mini is the<br><em>first AGI</em> that works<br>for <i>you.</i></h2>
+  <p class="sub">AGI isn't a lab announcement. AGI is when an AI system can <b>autonomously handle every function of your business and life</b> — learning, deciding, executing, improving — without being told how. That's what AONXI OS becomes.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-bottom:48px">
+    <!-- Left: The AGI definition -->
+    <div>
+      <div style="font-size:13px;font-weight:700;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px">What AGI actually means for you</div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="padding:20px;background:var(--s2);border-radius:8px;border-left:3px solid var(--gold)">
+          <div style="font-size:15px;font-weight:700;margin-bottom:6px">For individuals</div>
+          <div style="font-size:13px;color:var(--muted);line-height:1.7">Your Mac Mini manages your health data, tracks your fitness, optimizes your nutrition, handles your finances, writes your emails, manages your calendar, learns your preferences, and gets smarter every day. <b style="color:var(--text)">A second brain that never sleeps, never forgets, and is 100% yours.</b></div>
+        </div>
+        <div style="padding:20px;background:var(--s2);border-radius:8px;border-left:3px solid var(--gold)">
+          <div style="font-size:15px;font-weight:700;margin-bottom:6px">For businesses</div>
+          <div style="font-size:13px;color:var(--muted);line-height:1.7">50+ agents handle sales, support, finance, HR, IT, QA, marketing, legal review, and operations — all teaching each other through shared memory. <b style="color:var(--text)">Every department connected. Every insight shared. Every process automated. One Mac Mini.</b></div>
+        </div>
+        <div style="padding:20px;background:var(--s2);border-radius:8px;border-left:3px solid var(--green)">
+          <div style="font-size:15px;font-weight:700;margin-bottom:6px">The transformation</div>
+          <div style="font-size:13px;color:var(--muted);line-height:1.7">Today: you use 15 different SaaS tools that don't talk to each other. Tomorrow: one AI OS that sees everything, connects everything, and improves everything. <b style="color:var(--text)">That's not a feature upgrade. That's AGI for your life.</b></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: The AGI roadmap terminal -->
+    <div class="t">
+      <div class="t-bar"><div class="t-dot" style="background:#ff5f57"></div><div class="t-dot" style="background:#ffbd2e"></div><div class="t-dot" style="background:#28c840"></div><div class="t-title">AONXI OS &rarr; AGI transformation roadmap</div></div>
+      <div class="t-body">
+<span class="th">STAGE 1: NARROW AI (WHERE WE ARE NOW)</span><br>
+<span class="to">  Each agent excels at ONE job. Outreach finds leads.</span><br>
+<span class="to">  Sales closes deals. Support resolves tickets.</span><br>
+<span class="to">  Separate skills. Shared memory. <span class="th">559x RPDC proved.</span></span><br><br>
+
+<span class="th">STAGE 2: CROSS-DOMAIN INTELLIGENCE (6 MONTHS)</span><br>
+<span class="to">  Agents don't just share memory — they share reasoning.</span><br>
+<span class="to">  Sales agent understands WHY support tickets spike.</span><br>
+<span class="to">  Finance agent predicts revenue from outreach patterns.</span><br>
+<span class="to">  <span class="tb">The system reasons across domains. Like a CEO would.</span></span><br><br>
+
+<span class="th">STAGE 3: SELF-IMPROVING SYSTEM (12 MONTHS)</span><br>
+<span class="to">  The OS creates new agents when it detects gaps.</span><br>
+<span class="to">  Writes its own experiments. Tests its own hypotheses.</span><br>
+<span class="to">  Deprecates underperforming agents automatically.</span><br>
+<span class="to">  <span class="tb">You don't manage AI. AI manages itself.</span></span><br><br>
+
+<span class="th">STAGE 4: PERSONAL AGI (18-24 MONTHS)</span><br>
+<span class="to">  Your Mac Mini understands your ENTIRE context.</span><br>
+<span class="to">  Health + wealth + work + relationships + goals.</span><br>
+<span class="to">  Makes decisions you'd make, but faster and better.</span><br>
+<span class="to">  <span class="tw">Not artificial general intelligence for the world.</span></span><br>
+<span class="to">  <span class="tw">Artificial general intelligence for YOU.</span></span><br><br>
+
+<span class="th">STAGE 5: DISTRIBUTED AGI NETWORK (36+ MONTHS)</span><br>
+<span class="to">  1 billion Mac Minis. Each one a personal AGI.</span><br>
+<span class="to">  Opt-in federated learning. Your clone teaches others.</span><br>
+<span class="to">  Others' clones teach yours. Privacy preserved.</span><br>
+<span class="to">  <span class="tw">A network of AGIs. Each one owned by a human.</span></span><br>
+<span class="to">  <span class="tw">That's not Skynet. That's democracy.</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- How this differs from Big Tech AGI -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border-radius:10px;overflow:hidden;margin-bottom:32px">
+    <div style="background:var(--s2);padding:32px 28px">
+      <div style="font-size:11px;font-weight:700;color:var(--red);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px">Big Tech's AGI vision</div>
+      <div style="font-size:14px;color:var(--muted);line-height:1.8">One god-model in a data center. Controlled by one company. Trained on everyone's data. Accessible via API. They own the intelligence. You rent access. They decide what it can do. They decide the price. They decide when to shut it down. <b style="color:var(--red)">AGI as a service. The ultimate lock-in.</b></div>
+    </div>
+    <div style="background:var(--s2);padding:32px 28px;border-left:2px solid var(--gold)">
+      <div style="font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px">AONXI's AGI vision</div>
+      <div style="font-size:14px;color:var(--muted);line-height:1.8">One personal AGI per human. On YOUR hardware. Trained on YOUR data. Owned by YOU. No API calls. No subscriptions. No kill switch. Gets smarter every day from YOUR life. <b style="color:var(--gold)">AGI as property. Intelligence you own like you own your home.</b></div>
+    </div>
+  </div>
+
+  <div class="grid g4" style="margin-bottom:32px">
+    <div class="c" style="text-align:center">
+      <div style="font-size:32px;font-weight:900;color:var(--gold);margin-bottom:6px">Day 1</div>
+      <div style="font-size:13px;font-weight:700;margin-bottom:4px">Task AI</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.6">Agents handle specific tasks. Email, tickets, invoices. Narrow but effective. Already 559x RPDC.</div>
+    </div>
+    <div class="c" style="text-align:center">
+      <div style="font-size:32px;font-weight:900;color:var(--gold);margin-bottom:6px">Month 6</div>
+      <div style="font-size:13px;font-weight:700;margin-bottom:4px">Connected AI</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.6">Agents reason across domains. Sales insights improve support. Finance predicts from outreach.</div>
+    </div>
+    <div class="c" style="text-align:center">
+      <div style="font-size:32px;font-weight:900;color:var(--gold);margin-bottom:6px">Year 1</div>
+      <div style="font-size:13px;font-weight:700;margin-bottom:4px">Self-Evolving AI</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.6">System creates and retires agents autonomously. Writes experiments. Optimizes itself.</div>
+    </div>
+    <div class="c" style="text-align:center">
+      <div style="font-size:32px;font-weight:900;color:var(--gold);margin-bottom:6px">Year 2</div>
+      <div style="font-size:13px;font-weight:700;margin-bottom:4px">Personal AGI</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.6">Understands your full context. Makes decisions like you would. A general intelligence — for your life.</div>
+    </div>
+  </div>
+
+  <div class="box" style="text-align:center;font-size:16px;font-weight:700;line-height:1.8">
+    <span style="color:var(--gold)">AGI won't arrive in a press release. It'll arrive on your desk.</span><br>
+    <span style="color:var(--text);font-weight:400">A $499 Mac Mini that starts as a task runner and evolves into the most powerful intelligence you'll ever own — trained on your data, running on your hardware, answering to no one but you.</span>
+  </div>
+</section>
+
+<!-- ═══════ CLAIM YOUR CLONE ═══════ -->
+<section id="clone" style="padding:120px 48px;position:relative;overflow:hidden;border-bottom:none">
+  <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(ellipse at center top,rgba(240,180,41,.06),transparent 70%);pointer-events:none"></div>
+  <div style="max-width:680px;margin:0 auto;text-align:center;position:relative;z-index:1">
+    <div class="tag">Your AI clone</div>
+    <h2 style="font-size:clamp(36px,5vw,64px);font-weight:900;letter-spacing:-.04em;line-height:.93;margin-bottom:20px">Claim your <i style="font-family:'Playfair Display',serif;font-style:italic;color:var(--gold)">clone.</i></h2>
+    <p style="font-size:18px;color:var(--muted);line-height:1.8;font-weight:300;margin-bottom:12px">An AI trained on <b style="color:var(--text);font-weight:600">your own data</b>, running on <b style="color:var(--text);font-weight:600">your own hardware</b>, with AI models running <b style="color:var(--text);font-weight:600">locally</b>. Your outreach, your tools, your work, your education, your health — everything that makes you <em>you</em>, running in a Mac Mini that gets better every day.</p>
+    <p style="font-size:15px;color:var(--muted);line-height:1.8;font-weight:300;margin-bottom:40px">Register below. We'll meet you, understand your life and work, clone you into a Mac Mini, and be with you as long as you want. Walk away anytime. <b style="color:var(--gold)">No contracts. The hardware is yours. The software is yours. The electricity is yours. Everything is yours.</b></p>
+
+    <!-- FORM -->
+    <form id="clone-form" style="display:flex;flex-direction:column;gap:12px;max-width:440px;margin:0 auto 32px;text-align:left" onsubmit="return sendClone(event)">
+      <input id="cf-name" type="text" placeholder="Your full name" required style="padding:16px 18px;background:var(--s2);border:1px solid var(--border2);border-radius:8px;color:var(--text);font-family:'Inter',sans-serif;font-size:15px;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--border2)'">
+      <input id="cf-email" type="email" placeholder="Your email" required style="padding:16px 18px;background:var(--s2);border:1px solid var(--border2);border-radius:8px;color:var(--text);font-family:'Inter',sans-serif;font-size:15px;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--border2)'">
+      <input id="cf-phone" type="tel" placeholder="Your phone number" style="padding:16px 18px;background:var(--s2);border:1px solid var(--border2);border-radius:8px;color:var(--text);font-family:'Inter',sans-serif;font-size:15px;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--border2)'">
+      <select id="cf-use" style="padding:16px 18px;background:var(--s2);border:1px solid var(--border2);border-radius:8px;color:var(--muted);font-family:'Inter',sans-serif;font-size:15px;outline:none;-webkit-appearance:none">
+        <option value="">What do you want your clone to do first?</option>
+        <option value="outreach">Find leads &amp; book meetings (Sales/Outreach)</option>
+        <option value="support">Handle support tickets (IT/Helpdesk)</option>
+        <option value="finance">Manage invoices &amp; forecasting (Finance)</option>
+        <option value="hr">Screen resumes &amp; hiring (HR)</option>
+        <option value="replace-saas">Replace my entire SaaS stack</option>
+        <option value="personal">Personal AI clone (health + wealth + productivity)</option>
+        <option value="all">Everything — full AONXI OS deployment</option>
+      </select>
+      <button type="submit" id="cf-btn" style="padding:18px;background:var(--gold);color:var(--bg);font-size:16px;font-weight:800;border:none;border-radius:8px;cursor:pointer;letter-spacing:.02em;transition:all .2s;box-shadow:0 4px 20px rgba(240,180,41,.25)">CLAIM YOUR AI CLONE</button>
+    </form>
+    <div id="cf-success" style="display:none;padding:24px;background:var(--gd);border:1.5px solid var(--gb);border-radius:10px;max-width:440px;margin:0 auto">
+      <div style="font-size:20px;font-weight:800;color:var(--gold);margin-bottom:8px">Clone claimed.</div>
+      <div style="font-size:14px;color:var(--muted);line-height:1.7">We just got your details. Anmol will personally reach out within 24 hours to understand your life, your work, and how to build your perfect AI clone. No contracts. No pressure. Just a conversation.</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:8px;overflow:hidden;margin-bottom:32px">
+      <div style="background:var(--s1);padding:18px 14px;text-align:center"><div style="font-size:20px;font-weight:900;color:var(--gold)">Yours</div><div style="font-size:10px;color:var(--dim)">Hardware</div></div>
+      <div style="background:var(--s1);padding:18px 14px;text-align:center"><div style="font-size:20px;font-weight:900;color:var(--gold)">Yours</div><div style="font-size:10px;color:var(--dim)">Software</div></div>
+      <div style="background:var(--s1);padding:18px 14px;text-align:center"><div style="font-size:20px;font-weight:900;color:var(--gold)">Yours</div><div style="font-size:10px;color:var(--dim)">Data</div></div>
+      <div style="background:var(--s1);padding:18px 14px;text-align:center"><div style="font-size:20px;font-weight:900;color:var(--gold)">Zero</div><div style="font-size:10px;color:var(--dim)">Contracts</div></div>
+    </div>
+    <div style="font-size:12px;color:var(--dim);line-height:1.7;max-width:500px;margin:0 auto">The Mac Mini is yours to keep regardless. The software is open source. The models run locally. We don't lock you in. We don't hold your data. If you want us gone, we're gone. We stay because the AI we build makes your life better, not because of a contract.</div>
+  </div>
+</section>
+
+<footer style="padding:40px 48px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center"><div style="font-size:20px;font-weight:900;color:var(--gold)">AONXI</div><div style="font-size:12px;color:var(--dim)">Built by Anmol Sam &middot; CTO, Aonxi &middot; github.com/originaonxi</div></footer>
+
+<script>
+const _obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')})},{threshold:.06});
+document.querySelectorAll('.reveal').forEach(el=>_obs.observe(el));
+
+function sendClone(e){
+  e.preventDefault();
+  const name=document.getElementById('cf-name').value;
+  const email=document.getElementById('cf-email').value;
+  const phone=document.getElementById('cf-phone').value||'Not provided';
+  const use=document.getElementById('cf-use').value||'Not selected';
+  const subject='AONXI — New Clone Request: '+name;
+  const body='NEW CLONE REQUEST\n\nName: '+name+'\nEmail: '+email+'\nPhone: '+phone+'\nFirst use case: '+use+'\n\nSubmitted from: originaonxi.github.io/super-brain';
+  // Open mailto
+  window.location.href='mailto:lifeislovesam@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+  // Show success
+  document.getElementById('clone-form').style.display='none';
+  document.getElementById('cf-success').style.display='block';
+  return false;
+}
+</script>
 </body>
 </html>
